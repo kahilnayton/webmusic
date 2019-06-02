@@ -1,12 +1,8 @@
-# webmusic
-<img width="852" alt="logo" src="https://user-images.githubusercontent.com/29616227/58763417-60c1a400-8528-11e9-97dd-e22f3b6ddded.png">
-
-
-A web based drum machine, arpeggiator and synth.
+ A web based drum machine, arpeggiator and synth.
 
 ## Abstract
 WebMusic is a React Native front-end / Express back end application to allow users to create loops and music directly in their browser.
-The main inspiration is from 16 step drum machines whic can be programed with pre defined sampels.
+The main inspiration is from 16 step drum machines which can be programed with predefined samples.
 
 
 ## inspiration
@@ -16,38 +12,38 @@ The main inspiration is from 16 step drum machines whic can be programed with pr
 
 
 - React
-- Express 
+- Express
 - Sequelize
-- Tone.js 
+- Tone.js
 - Semantic UI
-- React-router 
+- React-router
 - password & jwt
 
-## Technologies - maybies  
-- p5 because they have a bunch on inbuilt sound and visual stuff. 
+## Technologies - maybies 
+- p5 because they have a bunch on inbuilt sound and visual stuff.
 
 - TypeScript because it makes it more modular and allow me to make different samples in the engines and draw on them
 
-- Webpack becaue it might make it easir to allow for samples to be played
+- Webpack because it might make it easier to allow for samples to be played
 
 - Expo Audio api - recording samples
 
 
 # MVP
 
-- User sign in, sign out, delete account and create a new account 
+- User sign in, sign out, delete account and create a new account
 - Be able to program drums
-- Start, stop the beat & volume 
+- Start, stop the beat & volume
 - Change the Bpm
 
 
 ## MVP - post
-Be able to program effects 
- - Envelope filter 
- - Distortion
- - Reverb
+Be able to program effects
+- Envelope filter
+- Distortion
+- Reverb
 
-Visual effects that change when user alters parameters 
+Visual effects that change when user alters parameters
 A keyboard synth
 Responsive design
 
@@ -61,28 +57,28 @@ Upload samples
 
 # Timeline
 
-Monday 
-- Set up express & sequelize db with one user 
-- Set up Auth 
+Monday
+- Set up express & sequelize db with one user
+- Set up Auth
 - Settle on what alternate technologies I'll utilize
 
-Tuesday 
-- Set up basic style 
+Tuesday
+- Set up basic style
 - Complete CRUD for the user
 - Get sounds rendering
 
-Wednesday 
-- Finish MVP one 
+Wednesday
+- Finish MVP one
 - Implement some extra style
-- Get Sequenser working with all drum sounds 
+- Get Sequencer working with all drum sounds
 
-Thursday 
-- More style 
-- Work on the Arpeggiator 
+Thursday
+- More style
+- Work on the Arpeggiator
 - Keyboard
 
-Friday 
-- Responsive design 
+Friday
+- Responsive design
 - Adding and uploading sounds
-- Finish design 
+- Finish design
 
