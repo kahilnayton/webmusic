@@ -14,34 +14,34 @@ The main inspiration is from 16 step drum machines whic can be programed with pr
 
 ## Technologies
 
-- Deffinitely using 
-React
-Express 
-Tone.js 
-Semantic UI
-React-router 
-password & jwt
 
-- Thinking about using 
-### p5
-They have a bunch on inbuilt sound and visual stuff. 
+- React
+- Express 
+- Sequelize
+- Tone.js 
+- Semantic UI
+- React-router 
+- password & jwt
 
-### TypeScript
-Make it more modular and allow me to make different samples in the engines and draw on them
+## Technologies - maybies  
+- p5 because they have a bunch on inbuilt sound and visual stuff. 
 
-### Webpack
-Might make it easir to allow for samples to be played
+- TypeScript because it makes it more modular and allow me to make different samples in the engines and draw on them
+
+- Webpack becaue it might make it easir to allow for samples to be played
+
+- Expo Audio api - recording samples
 
 
 # MVP
 
-User sign in, sign out, delete account and create a new account 
-Be able to program drums
-Start, stop the beat & volume 
-Change the Bpm
+- User sign in, sign out, delete account and create a new account 
+- Be able to program drums
+- Start, stop the beat & volume 
+- Change the Bpm
 
 
-## post MVP
+## MVP - post
 Be able to program effects 
  - Envelope filter 
  - Distortion
@@ -51,7 +51,7 @@ Visual effects that change when user alters parameters
 A keyboard synth
 Responsive design
 
-## beyond MVP
+## MVP - beyond
 User able to edit samples and add them to the sequencer
 Upload samples
 
@@ -59,6 +59,30 @@ Upload samples
 
 <img width="800" alt="erd" src="https://user-images.githubusercontent.com/29616227/58763800-b482bc00-852d-11e9-8532-283327f474e5.png">
 
+# Timeline
 
+Monday 
+- Set up express & sequelize db with one user 
+- Set up Auth 
+- Settle on what alternate technologies I'll utilize
 
+Tuesday 
+- Set up basic style 
+- Complete CRUD for the user
+- Get sounds rendering
+
+Wednesday 
+- Finish MVP one 
+- Implement some extra style
+- Get Sequenser working with all drum sounds 
+
+Thursday 
+- More style 
+- Work on the Arpeggiator 
+- Keyboard
+
+Friday 
+- Responsive design 
+- Adding and uploading sounds
+- Finish design 
 
