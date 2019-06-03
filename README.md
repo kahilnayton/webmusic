@@ -5,7 +5,7 @@
  A web based drum machine, arpeggiator and synth.
 
 ## Abstract
-WebMusic is a React Native front-end / Express back end application to allow users to create loops and music directly in their browser.
+WebMusic is a React front-end / Express back end application to allow users to create loops and music directly in their browser.
 The main inspiration is from 16 step drum machines which can be programed with predefined samples.
 
 

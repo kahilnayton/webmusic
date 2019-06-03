@@ -1,0 +1,52 @@
+.log-in-pic {
+    background-size:contain;
+    background-position: center;
+    height: 35vh;
+    width: 60vw;
+
+    margin: auto;
+}
+
+.profile-page {
+    background: url('../../assets/images/spring_logo.png');
+    background-size:cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.8;
+    font-family: Heiti TC;
+    /* background-color: blue; */
+}
+
+.profile-page h2 {
+    color: rgb(224, 120, 0);
+}
+
+
+.grid-total {
+    /* border: solid; */
+    width: 50vw;
+    margin: auto;
+    /* background-color:green; */
+    opacity: .5
+}
+
+.col-shade {
+    margin-left: 25vw;
+    width: 50vw;
+}
+.center-me{
+    text-align:center;
+    padding-left:25vw;
+}
+
+.log-in-but {
+    padding-top: 9vh;
+}
+
+.warning {
+    color: red;
+}
+.sign-up{
+  margin-bottom: 2vh;
+}

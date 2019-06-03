@@ -1,0 +1,42 @@
+{
+  "name": "webmusic",
+  "version": "1.0.0",
+  "description": "P4 project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "db:fresh": "dropdb --if-exists -e webmusic_db && createdb -e webmusic_db && node resetDb.js && node seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kahilnayton/webmusic.git"
+  },
+  "author": "kahil nayton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kahilnayton/webmusic/issues"
+  },
+  "homepage": "https://github.com/kahilnayton/webmusic#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.11.0",
+    "semantic-ui-css": "^2.4.1",
+    "sequelize": "^5.8.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+
+}
