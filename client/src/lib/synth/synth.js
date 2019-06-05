@@ -58,7 +58,7 @@ MidiConvert.load("/backing.mid", function(midi) {
   // make sure you set the tempo before you schedule the events
   Tone.Transport.bpm.value = midi.header.bpm / 2;
 
-  // pass in the note events from one of the tracks as the second argument to Tone.Part
+  // need to be able to map through the notes and pass them on as a function
   var midiPart = new Tone.Part(function(time, note) {
 
     //use the events to play the synth
@@ -66,12 +66,8 @@ MidiConvert.load("/backing.mid", function(midi) {
 
   }, midi.tracks[0].notes).start()
 
-  midiPart.loopStart = 0;
-  midiPart.loopEnd = 32;
-  midiPart.loop = true;
 
-  // start the transport to hear the events
-  Tone.Transport.start()
+
 })
 
 export {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import sketch from "./sketch.js";
 
+
 class P5Wrapper extends Component {
   setState
   static propTypes = {
@@ -11,6 +12,7 @@ class P5Wrapper extends Component {
   };
 
   componentDidMount() {
+    // console.log(window);
     this.canvas = new window.p5(sketch, "app-p5_container");
     this.canvas.setOnReady(this.props.onReady);
     
