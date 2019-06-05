@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
+    "db:reset": "node seed.js",
     "db:fresh": "dropdb --if-exists -e webmusic_db && createdb -e webmusic_db && node resetDb.js && node seed.js"
   },
   "repository": {
@@ -32,11 +33,11 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^7.11.0",
+    "react-script": "^2.0.5",
     "semantic-ui-css": "^2.4.1",
     "sequelize": "^5.8.7"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
   }
-
 }

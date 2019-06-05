@@ -18,7 +18,7 @@ export const fetchUser = async (id) => {
 //get user beat
 export const fetchBeat = async(id)=>{
   try {
-    const resp = await api.get(`/${id}/goal`)
+    const resp = await api.get(`/${id}/beat`)
     return resp.data;
   } catch (e) {
     console.log(e)
