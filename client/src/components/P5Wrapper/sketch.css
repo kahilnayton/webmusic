@@ -1,0 +1,6 @@
+#app-p5_container {
+    display: flex;
+    width: 100vw;
+    height: 50vh;
+    border-color: green solid;
+}

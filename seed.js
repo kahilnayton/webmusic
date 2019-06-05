@@ -1,4 +1,4 @@
-const { db, Beat, User } = require('./models.js')
+const { db, Beat, User, Effect } = require('./models.js')
 
 async function main() {
 
@@ -8,6 +8,9 @@ async function main() {
     await Beat.destroy({
         where: {}
     })
+    await Effect.destroy({
+        where: {}
+    })
 
 
 
@@ -15,6 +18,12 @@ async function main() {
         name: 'Tim',
         email: 'lovestorock@gmail.com',
         password: 'letsrock'
+    })
+
+    const user2 = await User.create({
+        name: 'Bill',
+        email: 'billrock@gmail.com',
+        password: 'bill'
     })
 
 
@@ -33,10 +42,28 @@ async function main() {
         setting: 90
     })
 
+  
+
+    const reverb = await Effect.create({
+        label: 'reverb',
+        key: 'reverb'
+    })
+    const delay = await Effect.create({
+        label: 'delay',
+        key: 'delay'
+    })
+    const flanger = await Effect.create({
+        label: 'flanger',
+        key: 'flanger'
+    })
+
 
     await user1.setBeat(tango)
     await user1.setBeat(edm)
     await user1.setBeat(funk)
+
+
+    await user1.setEffect(reverb)
 
 
 }

@@ -22,12 +22,23 @@ const Beat = db.define('beat', {
 
 })
 
+const Effect = db.define('effect', {
+    label: Sequelize.STRING,
+    key: Sequelize.STRING
+
+})
+
 
 User.hasMany(Beat, {
     onDelete: 'cascade'
 });
 
+User.hasMany(Effect, {
+    onDelete: 'cascade'
+});
+
 Beat.belongsTo(User)
+Effect.belongsTo(User)
 
 
 
@@ -39,5 +50,6 @@ User.beforeCreate(async (user, options) => {
 module.exports = {
     db,
     User,
-    Beat
+    Beat,
+    Effect
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import sketch from "./sketch.js";
+import './sketch.css'
 
 
 class P5Wrapper extends Component {

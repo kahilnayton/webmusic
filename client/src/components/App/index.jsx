@@ -131,15 +131,13 @@ export default class App extends Component {
 
         {(loggedIn) ?
           <div>
+
             <ProfilePage
               findToken={this.findToken}
               toggleLog={this.toggleLog}
               user={userID}
               userInfo={userInfo}
               login={loggedIn} />
-
-
-
 
 
             <Header
@@ -170,7 +168,6 @@ export default class App extends Component {
             login={loggedIn}
             toggleLog={this.toggleLog}
             setCurrentUserInfo={this.setCurrentUserInfo} />
-
 
 
         }

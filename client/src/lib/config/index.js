@@ -3,42 +3,31 @@ export default {
 
   sliders: [
     {
-      label: "hh",
-      key: "hh",
-      min: 0,
-      init: 7,
-      max: 7,
-      step: 1,
-      precision: 0,
-    },
-    {
-      label: "clap",
-      key: "clap",
-      min: 0,
-      init: 7,
-      max: 7,
-      step: 1,
-      precision: 0,
-    },
-    {
-      label: "bass",
-      key: "bass",
-      min: 0,
-      init: 7,
-      max: 7,
-      step: 1,
-      precision: 0,
-    },
-  ],
-
-  knobs: [
-    {
       label: "reverb",
       key: "reverb",
       min: 0,
       init: 7,
       max: 7,
       step: 1,
+      precision: 0,
+    },
+    {
+      label: "delay",
+      key: "delay",
+      min: 0,
+      init: 7,
+      max: 7,
+      step: 1,
+      precision: 0,
+    },
+    {
+      label: "flanger",
+      key: "flanger",
+      min: 0,
+      init: 7,
+      max: 7,
+      step: 1,
+      precision: 0,
     },
   ],
 

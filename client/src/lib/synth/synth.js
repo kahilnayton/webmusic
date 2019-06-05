@@ -55,9 +55,7 @@ MainSynth.pentatonic = [
 
 MidiConvert.load("/backing.mid", function(midi) {
 
-  // make sure you set the tempo before you schedule the events
-  Tone.Transport.bpm.value = midi.header.bpm / 2;
-
+  
   // need to be able to map through the notes and pass them on as a function
   var midiPart = new Tone.Part(function(time, note) {
 

@@ -60,14 +60,15 @@ export default function (p) {
 
   p.setup = function () {
     // console.log("::: setup() props:", props);
-    let cnv = p.createCanvas(1000, 300)
+    let cnv = p.createCanvas(p.windowWidth, 500);
+    // p.windowResized = (p.resizeCanvas(p.windowWidth, p.windowHeight)) 
+    p.background(255, 0, 200);
     cnv.mousePressed(canvasPressed)
     beatLength = 16
     cellWidth = p.width / beatLength
     cursorPos = 0
 
     p.preload(drums)
-
 
 
 
@@ -170,13 +171,13 @@ export default function (p) {
     p.noStroke()
     for (let i = 0; i < beatLength; i++) {
       if (hPat[i] === 1) {
-        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height / 6, 15)
+        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height / 6, 25)
       }
       if (cPat[i] === 1) {
-        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height / 2, 15)
+        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height / 2, 25)
       }
       if (bPat[i] === 1) {
-        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height * 5 / 6, 15)
+        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height * 5 / 6, 25)
       }
     }
   }

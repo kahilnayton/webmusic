@@ -32,7 +32,7 @@ export default class ControlPanel extends Component {
           ))
         }
 
-        {/* <div className="text-center">
+        <div className="text-center">
           {this.props.drums.map((drum, index) => (
             <span key={`branches-num-item${index}`}>
               <strong>
@@ -43,7 +43,7 @@ export default class ControlPanel extends Component {
               </span>
             </span>
           ))}
-        </div> */}
+        </div>
       </div>
     );
   }

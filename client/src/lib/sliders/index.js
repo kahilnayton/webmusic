@@ -7,9 +7,9 @@ function getDrumsInitValue(key, data) {
 
 export function getDrums() {
   return {
-    hh: getDrumsInitValue("hh", config.sliders),
-    clap: getDrumsInitValue("clap", config.sliders),
-    bass: getDrumsInitValue("bass", config.sliders),
+    reverb: getDrumsInitValue("reverb", config.sliders),
+    delay: getDrumsInitValue("delay", config.sliders),
+    flanger: getDrumsInitValue("flanger", config.sliders),
 
     
   };
