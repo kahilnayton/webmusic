@@ -13,6 +13,7 @@ class P5Wrapper extends Component {
   componentDidMount() {
     this.canvas = new window.p5(sketch, "app-p5_container");
     this.canvas.setOnReady(this.props.onReady);
+    
   }
 
   componentWillReceiveProps(nextProps) {

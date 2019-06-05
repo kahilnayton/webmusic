@@ -90,7 +90,7 @@ class LogInPage extends Component {
   render() {
     const { isSignedIn, user, hasError } = this.state
     const errorMessage = hasError
-      ? <p className="warning"> Please enter a valid email & password </p>
+      ? <p className="warning"> You must enter a valid email & password </p>
       : null
 
     return (
