@@ -8,8 +8,8 @@ class P5Wrapper extends Component {
   setState
   static propTypes = {
     drums: PropTypes.array.isRequired,
-    renderPattern: PropTypes.func.isRequired,
-    onReady: PropTypes.func.isRequired,
+    // renderPattern: PropTypes.func.isRequired,
+    // onReady: PropTypes.func.isRequired,
   };
 
   componentDidMount() {

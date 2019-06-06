@@ -129,7 +129,7 @@ export default class App extends Component {
     return (
       <div>
 
-        {(loggedIn) ?
+        {(!loggedIn) ?
           <div>
 
             <ProfilePage
