@@ -7,7 +7,7 @@ import 'p5/lib/addons/p5.sound';
 
 
 
-let hh, clap, kick, snare
+let hh, clap, kick, snare, tom, soundFile
 let hPat, cPat, bPat;
 let hPhrase, bPhrase, sPhrase, cPhrase;
 let drums;
@@ -20,6 +20,8 @@ let cursorPos
 let button
 let rSlider, gSlider, bSlider;
 let followBeat
+let reverb, sound
+let r, g, b
 
 
 export default function (p) {
@@ -48,7 +50,7 @@ export default function (p) {
   }
 
   p.preload = () => {
-    // p.soundFormats('mp3')
+    p.soundFormats('mp3', 'ogg');
 
     hh = p.loadSound('samples/WMHat04_C-04.mp3', () => { })
     clap = p.loadSound('samples/WMClap03-04.mp3', () => { })
@@ -56,7 +58,8 @@ export default function (p) {
     snare = p.loadSound('samples/WMSnare16-04.mp3', () => { })
 
 
-
+    soundFile = p.loadSound('samples/WMTom03_M-04.mp3')
+    soundFile.disconnect();
   }
 
 
@@ -68,13 +71,17 @@ export default function (p) {
     p.background(255, 0, 200);
     cnv.mousePressed(canvasPressed)
     beatLength = 16
-    cellWidth = p.width/beatLength
+    cellWidth = p.width / beatLength
     cursorPos = 0
-    
+
+    // reverb = new p5.Reverb();
+    // reverb.process(soundFile, 3, 2);
+    // soundFile.play()
+
 
     p.preload(drums)
 
-  
+
 
 
     hPat = [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1]
@@ -101,8 +108,6 @@ export default function (p) {
     drums.onStep(() => { console.log(drums.partStep) })
 
 
-
-
     // let button = p.createButton('start');
     // button.position(65);
     // button.mousePressed(drums.loop());
@@ -122,15 +127,22 @@ export default function (p) {
     // let bSlider = p.createSlider(0, 255, 255);
     // bSlider.position(20, 80);
 
-  
+    // r = rSlider.value();
+    // g = gSlider.value();
+    // b = bSlider.value();
+
+
+  }
+
+  p.mousePressed = () => {
+    soundFile.play()
+
   }
 
 
 
   p.draw = () => {
-    // const r = rSlider.value();
-    // const g = gSlider.value();
-    // const b = bSlider.value();
+  
     // p.background(r, g, b);
     // p.text('red', rSlider.x * 2 + rSlider.width, 35);
     // p.text('green', gSlider.x * 2 + gSlider.width, 65);
@@ -163,6 +175,7 @@ export default function (p) {
     }
   }
 
+
   function canvasPressed() {
     let rowClicked = p.floor(4 * p.mouseY / p.height)
     let indexClicked = p.floor(16 * p.mouseX / p.width)
@@ -190,24 +203,24 @@ export default function (p) {
 
 
     for (let i = 0; i < beatLength; i++) {
-      p.line(i*p.width/beatLength, 0, i*p.width/beatLength, p.height)
+      p.line(i * p.width / beatLength, 0, i * p.width / beatLength, p.height)
     } for (let i = 0; i < 5; i++) {
-      p.line(0, i * p.height/4, p.width, i * p.height/4)
+      p.line(0, i * p.height / 4, p.width, i * p.height / 4)
     }
     p.noStroke()
-    
+
     for (let i = 0; i < beatLength; i++) {
       if (hPat[i] === 1) {
-        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height/8, 25)
+        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height / 8, 25)
       }
       if (cPat[i] === 1) {
-        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height * 3/8, 25)
+        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height * 3 / 8, 25)
       }
       if (bPat[i] === 1) {
-        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height * 5/8, 25)
+        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height * 5 / 8, 25)
       }
       if (sPat[i] === 1) {
-        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height*7/8, 25)
+        p.ellipse(i * cellWidth + 0.5 * cellWidth, p.height * 7 / 8, 25)
       }
     }
   }
