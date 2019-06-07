@@ -28,6 +28,15 @@ const Effect = db.define('effect', {
 
 })
 
+const Theme = db.define('theme', {
+    name: Sequelize.STRING,
+    red: Sequelize.INTEGER,
+    green: Sequelize.INTEGER,
+    blue: Sequelize.INTEGER
+
+})
+
+
 
 User.hasMany(Beat, {
     onDelete: 'cascade'
@@ -36,9 +45,13 @@ User.hasMany(Beat, {
 User.hasMany(Effect, {
     onDelete: 'cascade'
 });
+User.hasMany(Theme, {
+    onDelete: 'cascade'
+});
 
 Beat.belongsTo(User)
 Effect.belongsTo(User)
+Theme.belongsTo(User)
 
 
 
@@ -51,5 +64,6 @@ module.exports = {
     db,
     User,
     Beat,
-    Effect
+    Effect,
+    Theme
 }

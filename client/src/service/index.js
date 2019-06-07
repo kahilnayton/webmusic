@@ -25,10 +25,10 @@ export const fetchBeat = async(id)=>{
   }
 }
 
-//create beat
-export const createBeat = async(id, goal)=>{
+//create theme
+export const createTheme = async(id, theme)=>{
   try{
-    const resp = await api.post(`/${id}/create-beat`, goal)
+    const resp = await api.post(`/${id}/create-beat`, theme)
     return resp.data;
   }
   catch(e){

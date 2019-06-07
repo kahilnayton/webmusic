@@ -9,18 +9,43 @@ import tokenService from '../../service/tokenServices'
 import decode from 'jwt-decode'
 import P5Wrapper from "../P5Wrapper/";
 import config from "../../lib/config/";
-import { getDrums } from "../../lib/sliders/";
-// import { MainSynth } from "../../lib/synth/synth";
+import { createTheme } from '../../service/index'
+import { getColors } from "../../lib/sliders/";
+import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
+// import { getEffect } from "../../lib/synth/synth";
 // import  drumsSamples  from "../../lib/drums/drums";
 import '../../App.css'
 
 export default class App extends Component {
   constructor() {
     super();
+
+    const colors = [];
+    // for (let i = 0; i < config.colorNum; i++) {
+    colors.push({ ...getColors() });
+    // console.log(colors[1], colors, "colors")
+    // }
+
+    //   const effect = []
+    //   for (let i = 0; i < config.drumNum; i++) {
+    //   effect.push({...getEffects()})
+    //   console.log(effect, 'effect')
+
+    // }
+
+    // const color = this.getColor();
+
+
     this.state = {
       loggedIn: '',
       userInfo: null,
-      userID: ''
+      userID: '',
+      p5Props: {
+        status: "",
+        colors,
+        // MainSynth,
+        // drumsSample
+      }
     }
 
     // this i need to actually specify the tone note 
@@ -30,34 +55,8 @@ export default class App extends Component {
     // const drumsSamples = []
     // drumsSamples.push({ drumsSamples })
 
-    const drums = [];
-    for (let i = 0; i < config.drumNum; i++) {
-      drums.push({ ...getDrums() });
-    }
-
-
-    this.state = {
-      p5Props: {
-        status: "",
-        drums,
-        // MainSynth,
-        // drumsSamples,
-      },
-    };
   }
 
-
-  componentDidMount = async () => {
-    document.title = 'Web Music'
-    let token = await tokenService.fetchToken()
-    if (token) {
-      const userInfo = {}
-      const data = decode(token)
-      userInfo.name = data.name
-      await this.setCurrentUserInfo(userInfo)
-      // await this.toggleLog()
-    }
-  }
 
   findToken = async () => {
     let token = await tokenService.fetchToken()
@@ -77,6 +76,10 @@ export default class App extends Component {
     })
   }
 
+  // getColor = () => {
+  //   return 'red';
+  // }
+
   toggleLog = async () => {
     const loggedIn = !this.state.loggedIn
     const userInfo = loggedIn ? this.state.userInfo : null
@@ -90,24 +93,53 @@ export default class App extends Component {
       userID: userID,
     });
   }
+  // Where the crud happens
 
+  saveTheme = async () => {
+    const themeSelectedParams = {
+      name: this.state.name,
+      red: this.state.Number.parseInt(this.state.value),
+      green: this.state.Number.parseInt(this.state.value),
+      blue: this.state.Number.parseInt(this.state.value)
+    }
+    await createTheme(this.props.user, themeSelectedParams)
+    this.getAll()
 
-  setBeat = async () => {
-    const loggedIn = !this.state.loggedIn
-    const userInfo = loggedIn ? this.state.userInfo : null
-    const userID = loggedIn ? this.state.userInfo.id : ''
-    if (!loggedIn) { localStorage.clear() }
-
-
-    this.setState({
-      loggedIn: loggedIn,
-      userInfo: userInfo,
-      userID: userID,
-    });
   }
 
 
-  // Event handlers ------------------------------------------------------------
+  // fetchThemes = async () => {
+  //   const themeClicked = {
+  //     key: this.state.name,
+  //     name: this.state.name,
+  //     value: this.state.Number.parseInt(this.state.calGained)
+  //   }
+  //   await createEffect(this.props.user, newEffect)
+  //   this.getAll()
+
+  // deleteEffect = async () => {
+  //   const effectClicked = {
+  //     key: this.state.name,
+  //     name: this.state.name,
+  //     value: this.state.Number.parseInt(this.state.calGained)
+  //   }
+  //   await createEffect(this.props.user, newEffect)
+  //   this.getAll()
+
+
+
+  // <Button onSubmit={()=>this.addNewFood()}></Button>
+
+
+  //   this.setState({
+  //     loggedIn: loggedIn,
+  //     userInfo: userInfo,
+  //     userID: userID,
+  //   });
+  // }
+
+
+  // Event handlers ****
   renderPattern = (index, num) => {
     const drums = $.extend(true, [], this.state.p5Props.drums);
     drums[index].gridSize = num;
@@ -117,11 +149,31 @@ export default class App extends Component {
   onReady = () => this.setState({ status: "ready" });
 
   onSliderChange = (key) => (event) => {
-    const drums = $.extend(true, [], this.state.p5Props.drums);
-    drums.forEach((drum) => drum[key] = +event.target.value);
-    this.setState({ p5Props: { ...this.state.p5Props, drums } });
+    const colors = $.extend(true, [], this.state.p5Props.colors);
+    colors.forEach((color) => color[key] = +event.target.value);
+    this.setState({ p5Props: { ...this.state.p5Props, colors } });
+    console.log(colors, this.state.p5Props, 'savinging theme')
   }
 
+  componentDidMount = async () => {
+    document.title = 'Web Music'
+    let token = await tokenService.fetchToken()
+    if (token) {
+      const userInfo = {}
+      const data = decode(token)
+      userInfo.name = data.name
+      await this.setCurrentUserInfo(userInfo)
+      // await this.toggleLog()
+    }
+    // this.setState(state => ({
+    //   ...state,
+    //   'p5Props': {
+    //     ...state.p5props,
+    //     updateApp: this.updateApp
+    //   }
+    // }))
+    // // console.log(p5props)
+  }
 
 
   render() {
@@ -129,15 +181,18 @@ export default class App extends Component {
     return (
       <div>
 
-        {(!loggedIn) ?
+        {(loggedIn) ?
           <div>
 
-            <ProfilePage
-              findToken={this.findToken}
-              toggleLog={this.toggleLog}
-              user={userID}
-              userInfo={userInfo}
-              login={loggedIn} />
+            <Button inverted color="blue"
+              onSubmit={() => this.saveTheme()}>Save Theme</Button>
+
+            <Button inverted color="pink"
+              onSubmit={() => this.saveTheme()}>Delete Theme</Button>
+
+            <Button inverted color="orange"
+              onSubmit={() => this.toggleLog()}>Logout</Button>
+
 
 
             <Header
@@ -154,11 +209,20 @@ export default class App extends Component {
               login={loggedIn}
               userInfo={userInfo}
               getBranchesNum={this.getBranchesNum}
-              onReady={this.onReady} />
+              onReady={this.onReady}
+            />
+
 
             <ControlPanel
-              drums={this.state.p5Props.drums}
+              colors={this.state.p5Props.colors}
               onSliderChange={this.onSliderChange} />
+
+            <ProfilePage
+              findToken={this.findToken}
+              toggleLog={this.toggleLog}
+              user={userID}
+              userInfo={userInfo}
+              login={loggedIn} />
 
           </div>
 

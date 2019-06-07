@@ -1,15 +1,15 @@
 import config from "../config/"
 
 
-function getDrumsInitValue(key, data) {
+function getColorInitValue(key, data) {
   return data.find((item) => item.key === key).init;
 }
 
-export function getDrums() {
+export function getColors() {
   return {
-    reverb: getDrumsInitValue("reverb", config.sliders),
-    delay: getDrumsInitValue("delay", config.sliders),
-    flanger: getDrumsInitValue("flanger", config.sliders),
+    red: getColorInitValue("red", config.sliders),
+    green: getColorInitValue("green", config.sliders),
+    blue: getColorInitValue("blue", config.sliders),
 
     
   };

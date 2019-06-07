@@ -22,8 +22,6 @@ let rSlider, gSlider, bSlider;
 let followBeat
 let reverb, sound
 let r, g, b
-let color;
-let props;
 
 
 export default function (p) {
@@ -31,44 +29,33 @@ export default function (p) {
     p.onReady = cb;
     // stuff you need to render first 
     // console.log(cb, 'cb')
-    // console.log(p, 'p');
+    console.log(p, 'p');
     // console.log(p5, 'p5');
+
   }
 
 
   p.pushProps = function (_props) {
-    props = _props;
-    // color = props.color
-    console.log(props)
-    // let updateAppProps = _updateApp
+    let props = _props;
+    // console.log(props, p, 'push props')
     // let hh = props.MainSynth.pentatonic
     // let clap = props.MainSynth.pentatonic[2]
     // let bass = props.MainSynth.pentatonic[3]
+    // console.log(hh, 'hh')
     drawMatrix()
     // p.createCanvas(800, 300);
     // p.colorMode(p.RGB, 255, 255, 255, 1.0);
     p.loop();
-    // p.background(props.colors.red, props.colors.green, props.colors.blue);
-
+    Tone.Transport.start()
   }
 
-  // Private members ----------------------
-  let onReady = () => { };
-  let props = {};
-  let drumProps = [];
-
-
-  // Private classes ---------------------------
- 
-
-  // Lifecycle methods ================
   p.preload = () => {
-    // p.soundFormats('mp3', 'ogg');
+    p.soundFormats('mp3', 'ogg');
 
-    hh = p.loadSound('samples/WMHat04_C-04.mp3', () => { })
-    clap = p.loadSound('samples/WMClap03-04.mp3', () => { })
-    kick = p.loadSound('samples/MVKick06-04.mp3', () => { })
-    snare = p.loadSound('samples/WMSnare16-04.mp3', () => { })
+    hh = p.loadSound('samples/WMHat04_C-04.mp3', () => {})
+    clap = p.loadSound('samples/WMClap03-04.mp3', () => {})
+    kick = p.loadSound('samples/MVKick06-04.mp3', () => {})
+    snare = p.loadSound('samples/WMSnare16-04.mp3', () => {})
 
 
     tom = p.loadSound('samples/WMTom03_M-04.mp3')
@@ -79,26 +66,25 @@ export default function (p) {
 
 
   p.setup = function () {
+    // console.log("::: setup() props:", props);
     let cnv = p.createCanvas(p.windowWidth, 300);
     // p.windowResized = (p.resizeCanvas(p.windowWidth, p.windowHeight)) 
-    button = p.createButton();
-    console.log(props);
-
+    p.background(255, 0, 200);
     cnv.mousePressed(canvasPressed)
     beatLength = 16
     cellWidth = p.width / beatLength
     cursorPos = 0
 
-
-    // tom.disconnect()
     // reverb = new p5.Reverb()
-    // console.log(p.getAudioContext(), window.AudioContext);
-    // // reverb.addReverb(tom)
-    // reverb.process(tom, 4, 2);
+    // console.log(reverb)
+    // reverb.addReverb(tom)
+    // reverb.process(tom, 3, 2);
 
 
 
-    p.preload(drums)
+    // p.preload(drums)
+
+
 
 
     hPat = [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1]
@@ -125,13 +111,17 @@ export default function (p) {
     drums.addPhrase('seq', p.sequence, followBeat)
     drums.onStep(() => { console.log(drums.partStep) })
 
+
     // let button = p.createButton('start');
     // button.position(65);
     // button.mousePressed(drums.loop());
 
     bpmCTRL = p.createSlider()
+    
     bpmCTRL.position(600, 450)
+    // 
     // bpmCTRL.input(() => {  drums.setBPM(bpmCTRL.value()) }) 
+
 
     drums.setBPM('70')
 
@@ -148,35 +138,36 @@ export default function (p) {
     // r = rSlider.value();
     // g = gSlider.value();
     // b = bSlider.value();
-    // p.pixelDensity(1);
-    // p.frameRate(15);
-    // p.noLoop();
-    // onReady();
+
 
   }
 
+//   p.mousePressed = () => {
+//     soundFile.play()
 
-  // testing buttons() --------------------------------------------------------------------
-  function mousePressed() {
-    let checkPress = () => {
-      console.log('button pressed')
-    }
+//   }
+
+
+
+  p.draw = () => {
+  
+    // p.background(r, g, b);
+    // p.text('red', rSlider.x * 2 + rSlider.width, 35);
+    // p.text('green', gSlider.x * 2 + gSlider.width, 65);
+    // p.text('blue', bSlider.x * 2 + bSlider.width, 95);
+
+    // p.background(100);
+    // p.normalMaterial();
+    // p.noStroke();
+    // p.push();
+    // drawMatrix()
+    // p.box(100);
+    // p.pop();
+
   }
-
-
-
-
-  // draw() --------------------------------------------------------------------
-  p.draw = function () {
-    drawMatrix()
-    // tom.play()
-    // console.log('passingAnArrayOfapropsFromController')
-
-  }
-
-
 
   p.keyPressed = () => {
+    console.log(p.keyPressed, 'key pressed')
     if (p.key === " ") {
       if (hh.isLoaded() && clap.isLoaded() && kick.isLoaded() && snare.isLoaded()) {
         if (!drums.isPlaying) {
@@ -210,22 +201,14 @@ export default function (p) {
       // console.log('third row clicked')
     }
     drawMatrix()
-    // this.updateApp(hPat,cPat,bPat,sPat);
   }
 
   function drawMatrix() {
-    // p.background(300, 400)
+    p.background(300, 400)
     p.stroke('black')
     p.strokeWeight(2)
-    if (props.colors) {
-      console.log('omg')
-      p.fill(props.colors.red, props.colors.green, props.colors.blue)
-    }
-    else {
-      p.fill(255,255,255)
-    }
-   
-    console.log('yeet');
+    p.fill('black')
+
 
     for (let i = 0; i < beatLength; i++) {
       p.line(i * p.width / beatLength, 0, i * p.width / beatLength, p.height)
@@ -252,10 +235,12 @@ export default function (p) {
 
 
   p.sequence = (time, beatIndex) => {
+    console.log(beatIndex, 'beat index')
     setTimeout(() => {
       drawMatrix()
       drawPlayhead(beatIndex)
     }, time * 1000)
+
 
   }
 
@@ -264,5 +249,8 @@ export default function (p) {
     p.fill(255, 0, 0, 30)
     p.rect((beatIndex - 1) * cellWidth, 0, cellWidth, p.height)
   }
+
 }
+
+
 

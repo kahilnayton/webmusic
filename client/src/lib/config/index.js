@@ -1,34 +1,34 @@
 export default {
-  drumNum: 10,
+  colorNum: 3 ,
 
   sliders: [
     {
-      label: "reverb",
-      key: "reverb",
+      label: "red",
+      key: "red",
       min: 0,
-      init: 7,
-      max: 7,
+      init: 123,
+      max: 255,
       step: 1,
       precision: 0,
     },
     {
-      label: "delay",
-      key: "delay",
+      label: "green",
+      key: "green",
       min: 0,
-      init: 7,
-      max: 7,
+      init: 123,
+      max: 255,
       step: 1,
       precision: 0,
     },
     {
-      label: "flanger",
-      key: "flanger",
+      label: "blue",
+      key: "blue",
       min: 0,
-      init: 7,
-      max: 7,
+      init: 123,
+      max: 255,
       step: 1,
       precision: 0,
-    },
+    }
   ],
+  }
 
-}
