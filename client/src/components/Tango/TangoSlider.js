@@ -3,14 +3,14 @@ import { Grid, Input, Pagination, Segment, Icon } from 'semantic-ui-react'
 import TangoMachine from './TangoMachine'
 
 export default class TangoSlider extends Component {
-  state = { activePage: 1 }
+  state = { tangoState: 100 }
 
-  handleInputChange = (e, { value }) => this.setState({ activePage: value })
+  handleInputChange = (e, { value }) => this.setState({ tangoState: value })
 
-  handlePaginationChange = (e, { activePage }) => this.setState({ activePage })
+  handlePaginationChange = (e, { tangoState }) => this.setState({ tangoState })
 
   render() {
-    const { activePage } = this.state
+    const { tangoState } = this.state
 
     const IconExampleLink = () => (
       <div>
@@ -19,32 +19,25 @@ export default class TangoSlider extends Component {
     )
 
 
-    // console.log(this.state.activePage)
+    // console.log(this.state.tangoState)
 
     return (
       <React.Fragment>
 
 
-        <Grid columns={3} verticalAlign='middle'>
-          <Grid.Column>
-            <Segment secondary>
         <TangoMachine
-          activePage={this.state.activePage} />
-              <div>Effect {activePage}</div>
+          tangoState={this.state.tangoState} />
+              <div>Bpm {tangoState}</div>
               <Input
-                min={0}
-                max={255}
+                min={100}
+                max={400}
                 onChange={this.handleInputChange}
                 type='range'
-                value={activePage}
+                value={tangoState}
               />
               
           <i aria-hidden="true" class="like link heart outline icon"></i>
-            </Segment>
-
-          </Grid.Column>
-       
-        </Grid>
+           
       </React.Fragment>
     )
   }

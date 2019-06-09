@@ -3,14 +3,14 @@ import { Grid, Input, Pagination, Segment, Icon } from 'semantic-ui-react'
 import Machine from './Machine'
 
 export default class MachineSlider extends Component {
-  state = { activePage: 1 }
+  state = { machineState: 1 }
 
-  handleInputChange = (e, { value }) => this.setState({ activePage: value })
+  handleInputChange = (e, { value }) => this.setState({ machineState: value })
 
-  handlePaginationChange = (e, { activePage }) => this.setState({ activePage })
+  handlePaginationChange = (e, { machineState }) => this.setState({ machineState })
 
   render() {
-    const { activePage } = this.state
+    const { machineState } = this.state
 
     const IconExampleLink = () => (
       <div>
@@ -19,32 +19,26 @@ export default class MachineSlider extends Component {
     )
 
 
-    // console.log(this.state.activePage)
+    // console.log(this.state.machineState)
 
     return (
       <React.Fragment>
 
 
-        <Grid columns={3} verticalAlign='middle'>
-          <Grid.Column>
-            <Segment secondary>
+        
         <Machine
-          activePage={this.state.activePage} />
-              <div>Effect {activePage}</div>
+          machineState={this.state.machineState} />
+              <div>Effect {machineState}</div>
               <Input
                 min={0}
                 max={255}
                 onChange={this.handleInputChange}
                 type='range'
-                value={activePage}
+                value={machineState}
               />
               
           <i aria-hidden="true" class="like link heart outline icon"></i>
-            </Segment>
-
-          </Grid.Column>
-       
-        </Grid>
+           
       </React.Fragment>
     )
   }

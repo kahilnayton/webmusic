@@ -14,6 +14,8 @@ import { getColors } from "../../lib/sliders/";
 import Machine from '../Machine/Machine'
 import MachineSlider from '../../components/Machine/MachineSlider'
 import TangoSlider from '../../components/Tango/TangoSlider'
+import PolySlider from '../../components/Poly/PolySlider'
+import ArpeggiatorSlider from '../../components/Arpeggiator/ArpeggiatorSlider'
 import SimpleLoop from '../../components/SimpleLoop'
 import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
 // import { getEffect } from "../../lib/synth/synth";
@@ -185,9 +187,55 @@ export default class App extends Component {
         />
 
         {/* <Machine /> */}
+        <Grid columns='equal'>
+          <Grid.Row>
+            <Grid.Column>
+              <Segment>
+                <MachineSlider />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>
+                <TangoSlider />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>
+                <PolySlider />
+              </Segment>
+            </Grid.Column>
 
-        <MachineSlider />
-        <TangoSlider />
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <Segment>
+                <ArpeggiatorSlider />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>2</Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>3</Segment>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <Segment>1</Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>2</Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>2</Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+
+
+
+
+
 
         {/* <SimpleLoop /> */}
 

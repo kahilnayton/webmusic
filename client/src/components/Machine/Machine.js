@@ -6,26 +6,18 @@ import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-reac
 
 
 class Machine extends Component {
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
         this.state = {
-			// beat: null,
-            // isPLaying: false
+     
         }
-        // handleStopClick = () => {
-			//  Tone.stop()
-			//  this.state({ isPLaying: false })
-			//  console.log(this.isPLaying, 'nothing to stop')
-			// }
-			console.log(this.props)
-        // handleStartClick = () => {
-        //  // Tone.stop()
-        //  this.state({ isPLaying: true })
-        //  console.log(this.isPLaying, 'nothing to stop')
-        // }
+ 
+        console.log(this.props)
+  
     }
     start = () => {
-       let amSynth = new Tone.AMSynth({
+        let counter = 0
+        let amSynth = new Tone.AMSynth({
             harmonicity: 5 / 1,
             detune: 0,
             oscillator: {
@@ -47,10 +39,10 @@ class Machine extends Component {
                 release: 0.5
             }
         }
-		).toMaster()
-		
-        
-       let fmSynth = new Tone.FMSynth({
+        ).toMaster()
+
+
+        let fmSynth = new Tone.FMSynth({
             harmonicity: 1.1, // mod synth / carier synth
             modulationIndex: 20,
             detune: 0,
@@ -73,12 +65,12 @@ class Machine extends Component {
                 release: 0.5
             }
         }
-		).toMaster()
-		
-       let plucky = new Tone.PluckSynth().toMaster()
-    //    let fmSynth = new Tone.FMSynth().toMaster()
-       let bassSynth = new Tone.MembraneSynth().toMaster()
-       let cymbalSynth = new Tone.MetalSynth({
+        ).toMaster()
+
+        let plucky = new Tone.PluckSynth().toMaster()
+        //    let fmSynth = new Tone.FMSynth().toMaster()
+        let bassSynth = new Tone.MembraneSynth().toMaster()
+        let cymbalSynth = new Tone.MetalSynth({
             frequency: 200,
             envelope: {
                 attack: 0.001,
@@ -87,31 +79,37 @@ class Machine extends Component {
             },
             harmonicity: 3.1,
             modulationIndex: 32,
-            resonance: this.props.activePage, 
+            resonance: this.props.machineState,
             octaves: 1.5
         }).toMaster()
-		
-		// let counter = 0
 
-		let loopBeat = new Tone.Loop((time) => { 
-			fmSynth.triggerAttackRelease("D1", "8n")  
-			fmSynth.triggerAttackRelease("D2", "4n", time)  
-		
-		})
-	
-		Tone.Transport.start(0);
+        // let counter = 0
+
+        let loopBeat = new Tone.Loop((time) => {
+            if (counter % 4 === 0) {
+                fmSynth.triggerAttackRelease("D1", "8n")
+
+            }
+            if (counter % 2 === 0) {
+                fmSynth.triggerAttackRelease("D2", "4n", time)
+            }
+            counter = (counter + 1) % 16
+        })
+
+        Tone.Transport.start(0);
         loopBeat.start(0)
     }
-    
+
 
     render = () => {
+        // console.log(this.props.machineState)
 
         const isPlaying = this.state.isPLaying
         // let button
         return (
             <div>
-				<Button inverted color="green"
-              onClick={this.start}>Machine</Button>
+                <Button inverted color="green"
+                    onClick={this.start}>Machine</Button>
 
 
                 {/* {isPlaying ? (
