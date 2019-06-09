@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import sketch from "./sketch.js";
-// import sketchTwo from "./sketchTwo.js";
 import './sketch.css'
 
 
@@ -22,7 +21,6 @@ class P5Wrapper extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.canvas.pushProps(nextProps);
-    // this.canvasTwo.pushProps(nextProps);
   }
 
   shouldComponentUpdate() { 
@@ -31,7 +29,6 @@ class P5Wrapper extends Component {
 
   componentWillUnmount() {
     this.canvas.remove();
-    // this.canvasTwo.remove();
   }
 
   render() {

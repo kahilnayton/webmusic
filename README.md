@@ -6,11 +6,19 @@
 
 ## Abstract
 WebMusic is a React front-end / Express back end application to allow users to create loops and music directly in their browser.
-The main inspiration is from 16 step drum machines which can be programed with predefined samples.
+Inspired by The Art of Noise and other noise artists such as the great Italian Futurist Luigi Russolo this application allows you to try different sounds synthesised by the Tone.js sound library. A user can play these sounds against a drum machine, which in true noice music fashion appears to have little re;ivance to the different synth sounds.
+These Different sounds can be effected with the use of a parameter and then they can be saved to the users favouites list. 
 
 
-## inspiration
-<img width="852" alt="logo" src="https://user-images.githubusercontent.com/29616227/58763419-7040ed00-8528-11e9-835f-1c7557ec5f88.png">
+## Wireframes
+
+<img width="852" alt="wire1" src="https://user-images.githubusercontent.com/29616227/59163766-35642980-8ad3-11e9-9fed-d78272ee12fe.jpg">
+
+<img width="852" alt="wire2" src="https://user-images.githubusercontent.com/29616227/59163772-43b24580-8ad3-11e9-90e9-0102fe03fb4b.jpg">
+
+
+
+
 
 ## Technologies
 
@@ -23,37 +31,26 @@ The main inspiration is from 16 step drum machines which can be programed with p
 - React-router
 - password & jwt
 
-## Technologies - maybies 
 - p5 because they have a bunch on inbuilt sound and visual stuff.
 
-- TypeScript because it makes it more modular and allow me to make different samples in the engines and draw on them
-
-- Webpack because it might make it easier to allow for samples to be played
-
-- Expo Audio api - recording samples
 
 
 # MVP
 
 - User sign in, sign out, delete account and create a new account
 - Be able to program drums
-- Start, stop the beat & volume
-- Change the Bpm
+- Start, stop the beat with a space bar
+- be abble to play different sound effects and save them to their favorites.
 
 
 ## MVP - post
 Be able to program effects
-- Envelope filter
-- Distortion
-- Reverb
+- Be able to push these sounds into a stack and play them on the sequencer
 
 Visual effects that change when user alters parameters
 A keyboard synth
 Responsive design
 
-## MVP - beyond
-User able to edit samples and add them to the sequencer
-Upload samples
 
 # ERD
 

@@ -11,7 +11,9 @@ import P5Wrapper from "../P5Wrapper/";
 import config from "../../lib/config/";
 import { createTheme } from '../../service/index'
 import { getColors } from "../../lib/sliders/";
-import Machine from '../../components/Machine'
+import Machine from '../Machine/Machine'
+import MachineSlider from '../../components/Machine/MachineSlider'
+import TangoSlider from '../../components/Tango/TangoSlider'
 import SimpleLoop from '../../components/SimpleLoop'
 import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
 // import { getEffect } from "../../lib/synth/synth";
@@ -22,41 +24,14 @@ export default class App extends Component {
   constructor() {
     super();
 
-    const colors = [];
-    // for (let i = 0; i < config.colorNum; i++) {
-    colors.push({ ...getColors() });
-    // console.log(colors[1], colors, "colors")
-    // }
-
-    //   const effect = []
-    //   for (let i = 0; i < config.drumNum; i++) {
-    //   effect.push({...getEffects()})
-    //   console.log(effect, 'effect')
-
-    // }
-
-    // const color = this.getColor();
-
-
     this.state = {
       loggedIn: '',
       userInfo: null,
       userID: '',
       p5Props: {
         status: "",
-        colors,
-        // MainSynth,
-        // drumsSample
       }
     }
-
-    // this i need to actually specify the tone note 
-    // const synth = []
-    // synth.push({ MainSynth })
-
-    // const drumsSamples = []
-    // drumsSamples.push({ drumsSamples })
-
   }
 
 
@@ -78,9 +53,7 @@ export default class App extends Component {
     })
   }
 
-  // getColor = () => {
-  //   return 'red';
-  // }
+
 
   toggleLog = async () => {
     const loggedIn = !this.state.loggedIn
@@ -95,6 +68,8 @@ export default class App extends Component {
       userID: userID,
     });
   }
+
+
   // Where the crud happens
 
   saveTheme = async () => {
@@ -147,15 +122,15 @@ export default class App extends Component {
     drums[index].gridSize = num;
     this.setState({ p5Props: { ...this.state.p5Props, drums } });
   }
-
   onReady = () => this.setState({ status: "ready" });
-
   onSliderChange = (key) => (event) => {
     const colors = $.extend(true, [], this.state.p5Props.colors);
     colors.forEach((color) => color[key] = +event.target.value);
     this.setState({ p5Props: { ...this.state.p5Props, colors } });
     console.log(colors, this.state.p5Props, 'savinging theme')
   }
+
+
 
   componentDidMount = async () => {
     document.title = 'Web Music'
@@ -167,14 +142,7 @@ export default class App extends Component {
       await this.setCurrentUserInfo(userInfo)
       // await this.toggleLog()
     }
-    // this.setState(state => ({
-    //   ...state,
-    //   'p5Props': {
-    //     ...state.p5props,
-    //     updateApp: this.updateApp
-    //   }
-    // }))
-    // // console.log(p5props)
+
   }
 
 
@@ -186,18 +154,18 @@ export default class App extends Component {
         {(loggedIn) ?
           <div> */}
 
+        <div className="header-container">
 
+          <Button inverted color="blue"
+            onSubmit={() => this.saveTheme()}>All Sounds</Button>
 
-        <Button inverted color="blue"
-          onSubmit={() => this.saveTheme()}>Save Theme</Button>
+          <Button inverted color="pink"
+            onSubmit={() => this.saveTheme()}>My Sounds</Button>
 
-        <Button inverted color="pink"
-          onSubmit={() => this.saveTheme()}>Delete Theme</Button>
+          <Button inverted color="orange"
+            onSubmit={() => this.toggleLog()}>Logout</Button>
 
-        <Button inverted color="orange"
-          onSubmit={() => this.toggleLog()}>Logout</Button>
-
-
+        </div>
 
         <Header
           findToken={this.findToken}
@@ -216,13 +184,16 @@ export default class App extends Component {
           onReady={this.onReady}
         />
 
-        <Machine />
+        {/* <Machine /> */}
 
-        <SimpleLoop />
+        <MachineSlider />
+        <TangoSlider />
 
-        <ControlPanel
+        {/* <SimpleLoop /> */}
+
+        {/* <ControlPanel
           colors={this.state.p5Props.colors}
-          onSliderChange={this.onSliderChange} />
+          onSliderChange={this.onSliderChange} /> */}
 
         <ProfilePage
           findToken={this.findToken}

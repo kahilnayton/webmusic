@@ -14,7 +14,7 @@ class SimpleLoop extends Component {
     start = () => {
         // let bassSynth = new Tone.MembraneSynth().toMaster()
         let cymbalSynth = new Tone.MetalSynth({
-            frequency: 250, // trying to do something like {this.activePage}
+            frequency: this.props, // trying to do something like {this.activePage}
             envelope: {
                 attack: 0.001,
                 decay: 0.1,
@@ -41,7 +41,7 @@ class SimpleLoop extends Component {
 
 
     render() {
-        console.log(this.activePage) // this console logs the slider value
+        console.log(this.activePage) // this console logs the slider value 
         const { loopOne } = this.state
 
         return (
