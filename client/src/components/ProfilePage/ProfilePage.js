@@ -42,14 +42,14 @@ class ProfilePage extends Component {
     return (
       <div>
 
-        <form onSubmit={this.handleSubmit}>
+        {/* <form onSubmit={this.handleSubmit}>
           <label>
             Select Color:
     <input type="text"
               name="name" />
           </label>
           <input type="submit" value="Submit" />
-        </form>
+        </form> */}
 
       </div>
     );

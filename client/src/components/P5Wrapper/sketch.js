@@ -1,8 +1,7 @@
 /* globals $ */
-import Tone from 'tone';
-
 import p5 from "p5";
 import 'p5/lib/addons/p5.sound';
+
 // import 'p5/lib/addons/p5.dom';
 
 
@@ -27,8 +26,9 @@ let props;
 
 
 export default function (p) {
+  // p.state = {}
   p.setOnReady = function (cb) {
-    p.onReady = cb;
+    // p.onReady = cb;
     // stuff you need to render first 
     // console.log(cb, 'cb')
     // console.log(p, 'p');
@@ -37,17 +37,18 @@ export default function (p) {
 
 
   p.pushProps = function (_props) {
-    props = _props;
+    // props = _props;
     // color = props.color
-    console.log(props)
+    // console.log(props.colors.red, props.colors.green, props.colors.blue)
+    // console.log(props)
     // let updateAppProps = _updateApp
     // let hh = props.MainSynth.pentatonic
     // let clap = props.MainSynth.pentatonic[2]
     // let bass = props.MainSynth.pentatonic[3]
-    drawMatrix()
+    // drawMatrix()
     // p.createCanvas(800, 300);
     // p.colorMode(p.RGB, 255, 255, 255, 1.0);
-    p.loop();
+    // p.loop();
     // p.background(props.colors.red, props.colors.green, props.colors.blue);
 
   }
@@ -55,11 +56,11 @@ export default function (p) {
   // Private members ----------------------
   let onReady = () => { };
   let props = {};
-  let drumProps = [];
+  // let drumProps = [];
 
 
   // Private classes ---------------------------
- 
+
 
   // Lifecycle methods ================
   p.preload = () => {
@@ -82,7 +83,7 @@ export default function (p) {
     let cnv = p.createCanvas(p.windowWidth, 300);
     // p.windowResized = (p.resizeCanvas(p.windowWidth, p.windowHeight)) 
     button = p.createButton();
-    console.log(props);
+    // console.log(props);
 
     cnv.mousePressed(canvasPressed)
     beatLength = 16
@@ -168,6 +169,7 @@ export default function (p) {
 
   // draw() --------------------------------------------------------------------
   p.draw = function () {
+
     drawMatrix()
     // tom.play()
     // console.log('passingAnArrayOfapropsFromController')
@@ -214,18 +216,15 @@ export default function (p) {
   }
 
   function drawMatrix() {
-    // p.background(300, 400)
+    p.background(300, 400)
     p.stroke('black')
     p.strokeWeight(2)
-    if (props.colors) {
-      console.log('omg')
-      p.fill(props.colors.red, props.colors.green, props.colors.blue)
-    }
-    else {
-      p.fill(255,255,255)
-    }
-   
-    console.log('yeet');
+
+    p.fill('green')
+    
+
+
+    // console.log('yeet');
 
     for (let i = 0; i < beatLength; i++) {
       p.line(i * p.width / beatLength, 0, i * p.width / beatLength, p.height)
@@ -264,5 +263,6 @@ export default function (p) {
     p.fill(255, 0, 0, 30)
     p.rect((beatIndex - 1) * cellWidth, 0, cellWidth, p.height)
   }
+
 }
 

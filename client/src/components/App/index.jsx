@@ -11,6 +11,8 @@ import P5Wrapper from "../P5Wrapper/";
 import config from "../../lib/config/";
 import { createTheme } from '../../service/index'
 import { getColors } from "../../lib/sliders/";
+import Machine from '../../components/Machine'
+import SimpleLoop from '../../components/SimpleLoop'
 import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
 // import { getEffect } from "../../lib/synth/synth";
 // import  drumsSamples  from "../../lib/drums/drums";
@@ -180,51 +182,58 @@ export default class App extends Component {
     const { loggedIn, userID, userInfo } = this.state;
     return (
       <div>
-
+        {/* 
         {(loggedIn) ?
-          <div>
-
-            <Button inverted color="blue"
-              onSubmit={() => this.saveTheme()}>Save Theme</Button>
-
-            <Button inverted color="pink"
-              onSubmit={() => this.saveTheme()}>Delete Theme</Button>
-
-            <Button inverted color="orange"
-              onSubmit={() => this.toggleLog()}>Logout</Button>
+          <div> */}
 
 
 
-            <Header
-              findToken={this.findToken}
-              toggleLog={this.toggleLog}
-              user={userID}
-              userInfo={userInfo}
-              login={loggedIn} />
+        <Button inverted color="blue"
+          onSubmit={() => this.saveTheme()}>Save Theme</Button>
+
+        <Button inverted color="pink"
+          onSubmit={() => this.saveTheme()}>Delete Theme</Button>
+
+        <Button inverted color="orange"
+          onSubmit={() => this.toggleLog()}>Logout</Button>
 
 
-            <P5Wrapper
-              {...this.state.p5Props}
-              user={userID}
-              login={loggedIn}
-              userInfo={userInfo}
-              getBranchesNum={this.getBranchesNum}
-              onReady={this.onReady}
-            />
+
+        <Header
+          findToken={this.findToken}
+          toggleLog={this.toggleLog}
+          user={userID}
+          userInfo={userInfo}
+          login={loggedIn} />
 
 
-            <ControlPanel
-              colors={this.state.p5Props.colors}
-              onSliderChange={this.onSliderChange} />
+        <P5Wrapper
+          {...this.state.p5Props}
+          user={userID}
+          login={loggedIn}
+          userInfo={userInfo}
+          getBranchesNum={this.getBranchesNum}
+          onReady={this.onReady}
+        />
 
-            <ProfilePage
-              findToken={this.findToken}
-              toggleLog={this.toggleLog}
-              user={userID}
-              userInfo={userInfo}
-              login={loggedIn} />
+        <Machine />
 
-          </div>
+        <SimpleLoop />
+
+        <ControlPanel
+          colors={this.state.p5Props.colors}
+          onSliderChange={this.onSliderChange} />
+
+        <ProfilePage
+          findToken={this.findToken}
+          toggleLog={this.toggleLog}
+          user={userID}
+          userInfo={userInfo}
+          login={loggedIn} />
+
+
+
+        {/* </div>
 
           :
 
@@ -234,7 +243,7 @@ export default class App extends Component {
             setCurrentUserInfo={this.setCurrentUserInfo} />
 
 
-        }
+        } */}
 
       </div>
     );
