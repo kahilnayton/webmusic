@@ -5,8 +5,7 @@ const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/
     database: 'webmusic_db',
     dialect: 'postgres',
     define: {
-        underscored: true,
-        returning: true
+        underscored: true
     }
 })
 
@@ -16,12 +15,9 @@ const User = db.define('user', {
     password: Sequelize.STRING
 })
 
-
-
 const Sound = db.define('sound_entrie', {
     name: Sequelize.STRING,
     setting: Sequelize.INTEGER
-
 })
 
 // const UserSound = db.define('user_sound')
@@ -38,14 +34,14 @@ User.hasMany(Sound,
         onDelete: 'cascade'
 
     });
+
+    Sound.belongsTo(User,
+        {
+            foreignKey: 'user_id',
+            onDelete: 'cascade'
     
+        });
 
-Sound.belongsTo(User,
-    {
-        foreignKey: 'user_id',
-        onDelete: 'cascade'
-
-    });
 
 
 

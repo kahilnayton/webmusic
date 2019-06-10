@@ -4,7 +4,7 @@ const {User,Sound} = require('../models');
 const bodyParser = require('body-parser');
 const authRouter = require('./authRouter')
 
-userRouter.use(bodyParser.json());
+// userRouter.use(bodyParser.json());
 userRouter.use('/auth', authRouter);
 
 // get single user
@@ -19,7 +19,7 @@ userRouter.get('/:id',async(req,res)=>{
 })
 
 //find all sounds
-userRouter.get('/:user_id/sound', async(req,res)=>{
+userRouter.get('/:id/sound', async(req,res)=>{
   try{
     const allSounds = await Sound.findAll({
       where:{
@@ -38,6 +38,7 @@ userRouter.get('/:user_id/sound', async(req,res)=>{
 // create sound entry
 userRouter.post('/:id/create-sound', async (req, res) => {
   try {
+    console.log(req.body)
     const sound = await Sound.create(req.body);
     const who = await User.findByPk(req.params.id);
     await sound.setUser(who);
