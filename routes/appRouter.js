@@ -1,6 +1,5 @@
 const express = require('express')
 const appRouter = express.Router()
-const { passport } = require('../auth')
 
 appRouter.get('/protected', (req, res, next) => {
   res.json({ message: 'authenticated'})

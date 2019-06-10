@@ -1,4 +1,4 @@
-const { db, Beat, User, Effect, Theme } = require('./models.js')
+const { db, Beat, User, Effect, Theme, Sound } = require('./models.js')
 
 async function main() {
 
@@ -12,6 +12,10 @@ async function main() {
         where: {}
     })
     await Theme.destroy({
+        where: {}
+    })
+
+    await Sound.destroy({
         where: {}
     })
 
@@ -51,13 +55,25 @@ async function main() {
         label: 'reverb',
         key: 'reverb'
     })
+
     const delay = await Effect.create({
         label: 'delay',
         key: 'delay'
     })
+
     const flanger = await Effect.create({
         label: 'flanger',
         key: 'flanger'
+    })
+
+    const machine = await Sound.create({
+        name: 'machine',
+        setting: 13
+    })
+
+    const blue = await Sound.create({
+        name: 'blue',
+        setting: 38
     })
 
 
@@ -89,6 +105,13 @@ async function main() {
 
     await user1.setTheme(chill)
     await user2.setTheme(badass)
+
+    await user2.setSound(blue)
+    await user2.setSound(machine)
+
+    // await user1.addSound(machine, { through: {name: 'machine'}})
+
+
 
 
 }

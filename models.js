@@ -16,11 +16,21 @@ const User = db.define('user', {
     password: Sequelize.STRING
 })
 
+
 const Beat = db.define('beat', {
     name: Sequelize.STRING,
     setting: Sequelize.INTEGER
 
 })
+
+const Sound = db.define('sound_entrie', {
+    name: Sequelize.STRING,
+    setting: Sequelize.INTEGER
+
+})
+
+const UserSound = db.define('user_sound')
+
 
 const Effect = db.define('effect', {
     label: Sequelize.STRING,
@@ -37,14 +47,28 @@ const Theme = db.define('theme', {
 })
 
 
+User.belongsToMany(Sound, { through: UserSound })
+Sound.belongsToMany(User, { through: UserSound })
+
+
 
 User.hasMany(Beat, {
     onDelete: 'cascade'
 });
 
+// User.hasMany(Sound, {
+//     onDelete: 'cascade'
+// });
+
+// Sound.belongsToMany(User, {
+//     through: UserSound,
+//     onDelete: 'cascade'
+// });
+
 User.hasMany(Effect, {
     onDelete: 'cascade'
 });
+
 User.hasMany(Theme, {
     onDelete: 'cascade'
 });
@@ -52,6 +76,14 @@ User.hasMany(Theme, {
 Beat.belongsTo(User)
 Effect.belongsTo(User)
 Theme.belongsTo(User)
+
+// Sound.belongsTo(User)
+
+Promise.all([User.create(), Sound.create()])
+    .then(([user, sound]) => UserSound.create({userId: user.id, soundId: sound.id}))
+
+
+
 
 
 
@@ -65,5 +97,6 @@ module.exports = {
     User,
     Beat,
     Effect,
-    Theme
+    Theme,
+    Sound
 }

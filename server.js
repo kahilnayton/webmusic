@@ -1,7 +1,4 @@
-// **** this stuff for the multer ******
-// const bodyParser= require('body-parser')
-// const multer = require('multer');
-// app.use(bodyParser.urlencoded({extended: true}))
+
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -32,7 +29,7 @@ app.use('/auth', authRouter);
 app.use('/app', authorized, appRouter)
 app.use(passport.initialize())
 
-// app.use('/samples', express.static('samples'));
+app.use('/samples', express.static('samples'));
 
 
 app.get('/', async (request, response) => {

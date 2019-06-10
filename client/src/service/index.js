@@ -15,10 +15,10 @@ export const fetchUser = async (id) => {
   }
 }
 
-//get user beat
-export const fetchBeat = async(id)=>{
+//get user sound
+export const fetchSound = async(id)=>{
   try {
-    const resp = await api.get(`/${id}/beat`)
+    const resp = await api.get(`/${id}/sound`)
     return resp.data;
   } catch (e) {
     console.log(e)
@@ -28,12 +28,26 @@ export const fetchBeat = async(id)=>{
 //create theme
 export const createTheme = async(id, theme)=>{
   try{
-    const resp = await api.post(`/${id}/create-beat`, theme)
+    const resp = await api.post(`/${id}/create-theme`, theme)
     return resp.data;
   }
   catch(e){
     console.log(e)
   }
 }
+
+
+
+//create sound
+export const createSound = async(user, newSound)=>{
+  try{
+    const resp = await api.post(`/${user}/create-sound`, newSound)
+    return resp.data;
+  }
+  catch(e){
+    console.log(e)
+  }
+}
+
 
 

@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { Input, Icon, Button } from 'semantic-ui-react'
+import {createSound} from '../../service/index'
 import Machine from './Machine'
 
 export default class MachineSlider extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       name: 'Machine',
       machineState: 1,
-      userID: 2,
+      userID: '',
       loggedIn: true,
       userInfo: 'userInfo'
     }
@@ -21,12 +22,13 @@ export default class MachineSlider extends Component {
 
 
   addSound = async () => {
-    console.log('new sound', this.state.name, this.state.machineState)
+    // console.log('new sound', this.state.name, this.state.machineState)
+    console.log('new user', this.props.user)
     const newSound = {
       name: this.state.name,
       setting: Number.parseInt(this.state.machineState),
     }
-    // await createSound(this.props.user, newSound);
+    await createSound(this.props.user, newSound);
   }
 
 

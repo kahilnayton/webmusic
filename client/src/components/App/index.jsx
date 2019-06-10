@@ -1,6 +1,7 @@
 /* global $ */
 
 import React, { Component } from "react";
+import {Route, Link} from 'react-router-dom'
 import ControlPanel from "../ControlPanel/";
 import LogInPage from '../LoginPage/LoginPage'
 import ProfilePage from '../ProfilePage/ProfilePage'
@@ -17,7 +18,7 @@ import TangoSlider from '../../components/Tango/TangoSlider'
 import PolySlider from '../../components/Poly/PolySlider'
 import ArpeggiatorSlider from '../../components/Arpeggiator/ArpeggiatorSlider'
 import SimpleLoop from '../../components/SimpleLoop'
-import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 // import { getEffect } from "../../lib/synth/synth";
 // import  drumsSamples  from "../../lib/drums/drums";
 import '../../App.css'
@@ -27,9 +28,9 @@ export default class App extends Component {
     super();
 
     this.state = {
-      loggedIn: '',
+      loggedIn: true,
       userInfo: null,
-      userID: '',
+      userID: 1,
       p5Props: {
         status: "",
       }
@@ -58,6 +59,7 @@ export default class App extends Component {
 
 
   toggleLog = async () => {
+    console.log('logout')
     const loggedIn = !this.state.loggedIn
     const userInfo = loggedIn ? this.state.userInfo : null
     const userID = loggedIn ? this.state.userInfo.id : ''
@@ -152,9 +154,9 @@ export default class App extends Component {
     const { loggedIn, userID, userInfo } = this.state;
     return (
       <div>
-        {/* 
+        
         {(loggedIn) ?
-          <div> */}
+          <div>
 
         <div className="header-container">
 
@@ -164,8 +166,11 @@ export default class App extends Component {
           <Button inverted color="pink"
             onSubmit={() => this.saveTheme()}>My Sounds</Button>
 
-          <Button inverted color="orange"
-            onSubmit={() => this.toggleLog()}>Logout</Button>
+          <Link to='/'><Button inverted color="orange"
+            onClick={() => this.toggleLog()}>Logout
+           
+            </Button>
+            </Link>
 
         </div>
 
@@ -259,7 +264,7 @@ export default class App extends Component {
 
 
 
-        {/* </div>
+        </div>
 
           :
 
@@ -269,7 +274,7 @@ export default class App extends Component {
             setCurrentUserInfo={this.setCurrentUserInfo} />
 
 
-        } */}
+        }
 
       </div>
     );

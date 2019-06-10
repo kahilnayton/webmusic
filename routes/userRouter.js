@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router();
-const {User,Beat} = require('../models');
+const {User,Sound} = require('../models');
 const bodyParser = require('body-parser');
 const authRouter = require('./authRouter')
 
@@ -18,15 +18,15 @@ userRouter.get('/:id',async(req,res)=>{
     }
 })
 
-//find all food
-userRouter.get('/:id/beat', async(req,res)=>{
+//find all sounds
+userRouter.get('/:id/sound', async(req,res)=>{
   try{
-    const allFood = await Beat.findAll({
+    const allSounds = await Sound.findAll({
       where:{
         user_id: req.params.id
       }
     });
-    res.send(allFood);
+    res.send(allSounds);
   }
   catch(e){
     console.log(e)
@@ -34,27 +34,27 @@ userRouter.get('/:id/beat', async(req,res)=>{
 })
 
 
-// create food entry
-userRouter.post('/:id/create-beat', async (req, res) => {
+// create sound entry
+userRouter.post('/:id/create-sound', async (req, res) => {
   try {
-    const food = await Beat.create(req.body);
+    const sound = await Sound.create(req.body);
     const who = await User.findByPk(req.params.id);
-    await food.setUser(who);
-    res.json(food)
+    await sound.setUser(who);
+    res.json(sound)
   } catch (e) {
     console.log(e)
   }
 
 })
 
-// update food /update-food/:food_id
-userRouter.put('/update-beat/:food_id', async (req, res) => {
+// update sound /update-sound/:sound_id
+userRouter.put('/update-sound/:sound_id', async (req, res) => {
   try {
-    await Beat.update(
+    await Sound.update(
       req.body
       ,{
         where: {
-          id: req.params.food_id
+          id: req.params.sound_id
         }
       })
       res.send('updated')
@@ -63,12 +63,12 @@ userRouter.put('/update-beat/:food_id', async (req, res) => {
     }
 })
 
-//delete food
-userRouter.delete('/:id/beat-entry/:beat_id', async (req, res) => {
+//delete sound
+userRouter.delete('/:id/sound-entry/:sound_id', async (req, res) => {
   try {
-    const destroyBeat = await Beat.destroy({
+    const destroySound = await Sound.destroy({
       where:{
-        id: req.params.beat_id
+        id: req.params.sound_id
       }
     })
     res.send('msg: deleted');

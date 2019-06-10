@@ -7,7 +7,7 @@ const JWTStrategy = require('passport-jwt').Strategy
 const ExtractJWT = require('passport-jwt').ExtractJwt
 require('dotenv').config()
 
-const SECRET = process.env.secretKey // use an ENV variable & more secure string in a real app
+const SECRET = process.env.secretKey 
 
 const jwtSign = (payload) => {
   return jwt.sign(payload, SECRET)
