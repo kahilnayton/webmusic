@@ -16,10 +16,10 @@ class Arpeggiator extends Component {
         let polySynth = new Tone.PolySynth({
             oscillator: {
                 type: "pwm",
-                modulationFrequency: 20
+                modulationFrequency: 1
             },
             envelope: {
-                attack: 1,
+                attack: 0.1,
                 decay: 0.1,
                 sustain: 0.2,
                 release: 0.1,
@@ -29,17 +29,23 @@ class Arpeggiator extends Component {
 
         let loopBeat = new Tone.Loop((time) => {
             if (counter % 4 === 0) {
-                polySynth.triggerAttackRelease(["C4", "E4", "A4"], "4n")
+                polySynth.triggerAttackRelease("C3", "2n", time, 1)
 
             }
             if (counter % 2 === 0) {
-                polySynth.triggerAttackRelease("D1", "2n", time, 1)
+                polySynth.triggerAttackRelease("E3", "2n", time, this.props.arpeggiatorState)
+            }
+            if (counter % 6 === 0) {
+                polySynth.triggerAttackRelease("G3", "2n", time, 1)
+            }
+            if (counter % 8 === 0) {
+                polySynth.triggerAttackRelease("D4", "2n", time, this.props.arpeggiatorState)
             }
             counter = (counter + 1) % 16
         })
         Tone.Transport.start(0);
         loopBeat.start(0)
-        Tone.Transport.bpm.value = this.props.arpeggiatorState
+        Tone.Transport.bpm.value = 100
 
     }
     render = () => {

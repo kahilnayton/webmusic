@@ -93,7 +93,8 @@ export default function (p) {
 
 
 
-  p.keyPressed = () => {
+  p.keyPressed = (e) => {
+    e.preventDefault()
     if (p.key === " ") {
       if (hh.isLoaded() && clap.isLoaded() && kick.isLoaded() && snare.isLoaded()) {
         if (!drums.isPlaying) {

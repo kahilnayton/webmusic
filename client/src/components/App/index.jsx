@@ -16,9 +16,11 @@ import Machine from '../Machine/Machine'
 import MachineSlider from '../../components/Machine/MachineSlider'
 import TangoSlider from '../../components/Tango/TangoSlider'
 import PolySlider from '../../components/Poly/PolySlider'
+import PluckySlider from '../../components/Plucky/PluckySlider'
 import ArpeggiatorSlider from '../../components/Arpeggiator/ArpeggiatorSlider'
+import AmSlider from '../../components/Am/AmSlider'
 import SimpleLoop from '../../components/SimpleLoop'
-import { Button, Form, Grid, Segment } from 'semantic-ui-react'
+import { Button, Grid, Segment } from 'semantic-ui-react'
 // import { getEffect } from "../../lib/synth/synth";
 // import  drumsSamples  from "../../lib/drums/drums";
 import '../../App.css'
@@ -249,10 +251,21 @@ you have to re-click the button to implement the effect slider</h4>
               </Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment></Segment>
+              <Segment>
+              <PluckySlider 
+                 user={userID}
+                 login={loggedIn}
+                 userInfo={userInfo}/>
+              </Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment></Segment>
+              <Segment>
+              <AmSlider 
+                user={userID}
+                login={loggedIn}
+                userInfo={userInfo}
+                />
+              </Segment>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

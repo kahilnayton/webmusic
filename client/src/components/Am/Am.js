@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Tone from 'tone'
-import Slider from './MachineSlider'
+import AmSlider from './AmSlider'
 import { Button } from 'semantic-ui-react'
 
 
 
-class Machine extends Component {
+class Am extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            soundName: 'Machine'
+            soundName: 'Am'
      
         }
  
@@ -69,30 +69,20 @@ class Machine extends Component {
         ).toMaster()
 
        
-       
-       
-        let cymbalSynth = new Tone.MetalSynth({
-            frequency: 200,
-            envelope: {
-                attack: 0.001,
-                decay: 0.1,
-                release: 0.01
-            },
-            harmonicity: 3.1,
-            modulationIndex: 32,
-            resonance: this.props.machineState,
-            octaves: 1.5
-        }).toMaster()
 
-        // let counter = 0
+      
 
         let loopBeat = new Tone.Loop((time) => {
-            if (counter % 4 === 0) {
-                fmSynth.triggerAttackRelease("D1", "8n", time, 1)
+            if (counter % 2 === 0) {
+                amSynth.triggerAttackRelease("A2", "8n", time, 1)
 
             }
             if (counter % 2 === 0) {
-                cymbalSynth.triggerAttackRelease("D2", "4n", time)
+                amSynth.triggerAttackRelease("C2", "16n", time, 1)
+
+            }
+            if (counter % 4 === 0) {
+                amSynth.triggerAttackRelease("B2", "8m", time, 1)
             }
             counter = (counter + 1) % 16
         })
@@ -100,18 +90,19 @@ class Machine extends Component {
         Tone.Transport.start(0);
 
         loopBeat.start(0)
+        Tone.Transport.bpm.value = this.props.AmState
     }
 
 
     render = () => {
-        // console.log(this.props.machineState)
+        console.log(this.props.AmState)
 
         const isPlaying = this.state.isPLaying
         // let button
         return (
             <div>
                 <Button inverted color="green"
-                    onClick={this.start}>Machine</Button>
+                    onClick={this.start}>Am</Button>
 
 
                 {/* {isPlaying ? (
@@ -123,4 +114,4 @@ class Machine extends Component {
         );
     }
 }
-export default Machine;
+export default Am;
