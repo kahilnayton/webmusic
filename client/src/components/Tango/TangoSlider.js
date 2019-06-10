@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Grid, Input, Pagination, Segment, Icon } from 'semantic-ui-react'
+import { Button, Input, Icon } from 'semantic-ui-react'
 import TangoMachine from './TangoMachine'
+import {createSound} from '../../service/index'
 
 export default class TangoSlider extends Component {
   state = { tangoState: 100 }
@@ -8,6 +9,17 @@ export default class TangoSlider extends Component {
   handleInputChange = (e, { value }) => this.setState({ tangoState: value })
 
   handlePaginationChange = (e, { tangoState }) => this.setState({ tangoState })
+
+  addSound = async () => {
+    // console.log('new sound', this.state.name, this.state.machineState)
+    console.log('new user', this.props.user)
+    const newSound = {
+      name: this.state.name,
+      setting: Number.parseInt(this.state.machineState),
+    }
+    await createSound(this.props.user, newSound);
+  }
+
 
   render() {
     const { tangoState } = this.state
@@ -19,25 +31,26 @@ export default class TangoSlider extends Component {
     )
 
 
-    // console.log(this.state.tangoState)
-
     return (
       <React.Fragment>
 
 
         <TangoMachine
           tangoState={this.state.tangoState} />
-              <div>Bpm {tangoState}</div>
-              <Input
-                min={100}
-                max={400}
-                onChange={this.handleInputChange}
-                type='range'
-                value={tangoState}
-              />
-              
+        <div>Bpm {tangoState}</div>
+        <Input
+          min={100}
+          max={400}
+          onChange={this.handleInputChange}
+          type='range'
+          value={tangoState}
+        />
+
+        <Button onClick={() => this.addSound()}>
           <i aria-hidden="true" class="like link heart outline icon"></i>
-           
+
+        </Button>
+
       </React.Fragment>
     )
   }

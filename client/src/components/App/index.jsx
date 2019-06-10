@@ -134,6 +134,15 @@ export default class App extends Component {
     console.log(colors, this.state.p5Props, 'savinging theme')
   }
 
+  allSounds = () => {
+    
+  }
+
+
+  mySounds = () => {
+
+  }
+
 
 
   componentDidMount = async () => {
@@ -161,10 +170,10 @@ export default class App extends Component {
         <div className="header-container">
 
           <Button inverted color="blue"
-            onSubmit={() => this.saveTheme()}>All Sounds</Button>
+            onClick={() => this.allSounds()}>All Sounds</Button>
 
           <Button inverted color="pink"
-            onSubmit={() => this.saveTheme()}>My Sounds</Button>
+            onClick={() => this.mySounds()}>My Sounds</Button>
 
           <Link to='/'><Button inverted color="orange"
             onClick={() => this.toggleLog()}>Logout
@@ -173,6 +182,10 @@ export default class App extends Component {
             </Link>
 
         </div>
+
+        <h2 className="inst">Press Space to start the beat</h2>
+        <h4 className="inst">You can click samples on and off for different patterns</h4>
+
 
         <Header
           findToken={this.findToken}
@@ -190,6 +203,9 @@ export default class App extends Component {
           getBranchesNum={this.getBranchesNum}
           onReady={this.onReady}
         />
+
+<h4 className="inst">Try some sounds out... 
+you have to re-click the button to implement the effect slider</h4>
 
         {/* <Machine /> */}
         <Grid columns='equal'>
@@ -213,7 +229,11 @@ export default class App extends Component {
             </Grid.Column>
             <Grid.Column>
               <Segment>
-                <PolySlider />
+                <PolySlider 
+                user={userID}
+                login={loggedIn}
+                userInfo={userInfo}
+                />
               </Segment>
             </Grid.Column>
 
@@ -221,25 +241,29 @@ export default class App extends Component {
           <Grid.Row>
             <Grid.Column>
               <Segment>
-                <ArpeggiatorSlider />
+                <ArpeggiatorSlider 
+                user={userID}
+                login={loggedIn}
+                userInfo={userInfo}
+                />
               </Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment>2</Segment>
+              <Segment></Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment>3</Segment>
+              <Segment></Segment>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Segment>1</Segment>
+              <Segment></Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment>2</Segment>
+              <Segment></Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment>2</Segment>
+              <Segment></Segment>
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -77,20 +77,17 @@ export default function (p) {
     drums.addPhrase('seq', p.sequence, followBeat)
     drums.onStep(() => { console.log(drums.partStep) })
 
-    // bpmCTRL = p.createSlider()
-    // bpmCTRL.position(600, 450)
-    // bpmCTRL.input(() => {  drums.setBPM(bpmCTRL.value()) }) 
-
+    
     drums.setBPM('70')
-
+    
     drawMatrix()
-
+    
   }
-
-
+  
+  
   p.draw = function () {
-
-    drawMatrix()
+    
+ 
 
   }
 
