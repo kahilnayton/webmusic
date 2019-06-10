@@ -10,11 +10,11 @@ class Am extends Component {
         super(props);
         this.state = {
             soundName: 'Am'
-     
+
         }
- 
+
         console.log(this.props)
-  
+
     }
     start = () => {
         let counter = 0
@@ -68,9 +68,9 @@ class Am extends Component {
         }
         ).toMaster()
 
-       
 
-      
+
+
 
         let loopBeat = new Tone.Loop((time) => {
             if (counter % 2 === 0) {
@@ -82,7 +82,7 @@ class Am extends Component {
 
             }
             if (counter % 4 === 0) {
-                amSynth.triggerAttackRelease("B2", "8m", time, 1)
+                amSynth.triggerAttackRelease("B2", "1m", time, 1)
             }
             counter = (counter + 1) % 16
         })
@@ -93,23 +93,24 @@ class Am extends Component {
         Tone.Transport.bpm.value = this.props.AmState
     }
 
+    stop = () => {
+        Tone.Transport.stop()
+    }
 
     render = () => {
         console.log(this.props.AmState)
 
         const isPlaying = this.state.isPLaying
-        // let button
         return (
             <div>
                 <Button inverted color="green"
                     onClick={this.start}>Am</Button>
 
+                <Button inverted color="green"
+                    onClick={this.stop}>stop</Button>
 
-                {/* {isPlaying ? (
-                    <PlayButton onClick={this.start} />
-                ) : (
-                        <StopButton onClick={this.handleStopClick} />
-                    )} */}
+
+
             </div>
         );
     }

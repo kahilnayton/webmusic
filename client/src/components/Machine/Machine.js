@@ -10,11 +10,11 @@ class Machine extends Component {
         super(props);
         this.state = {
             soundName: 'Machine'
-     
+
         }
- 
+
         console.log(this.props)
-  
+
     }
     start = () => {
         let counter = 0
@@ -68,9 +68,9 @@ class Machine extends Component {
         }
         ).toMaster()
 
-       
-       
-       
+
+
+
         let cymbalSynth = new Tone.MetalSynth({
             frequency: 200,
             envelope: {
@@ -102,6 +102,11 @@ class Machine extends Component {
         loopBeat.start(0)
     }
 
+    stop = () => {
+        Tone.Transport.stop()
+    }
+
+
 
     render = () => {
         // console.log(this.props.machineState)
@@ -113,12 +118,9 @@ class Machine extends Component {
                 <Button inverted color="green"
                     onClick={this.start}>Machine</Button>
 
+                <Button inverted color="green"
+                    onClick={this.stop}>stop</Button>
 
-                {/* {isPlaying ? (
-                    <PlayButton onClick={this.start} />
-                ) : (
-                        <StopButton onClick={this.handleStopClick} />
-                    )} */}
             </div>
         );
     }

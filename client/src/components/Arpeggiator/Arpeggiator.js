@@ -48,12 +48,19 @@ class Arpeggiator extends Component {
         Tone.Transport.bpm.value = 100
 
     }
+
+    stop = () => {
+        Tone.Transport.stop(0)
+    }
+
     render = () => {
         console.log(this.props.arpeggiatorState)
         return (
             <div className="App">
                 <Button inverted color="red"
                     onClick={this.start}>Arpeggiator</Button>
+                <Button inverted color="red"
+                    onClick={this.stop}>stop</Button>
             </div>
         );
     }

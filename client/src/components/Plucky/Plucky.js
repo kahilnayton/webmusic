@@ -36,12 +36,21 @@ class PolyMachine extends Component {
         Tone.Transport.bpm.value = this.props.pluckyState
 
     }
+
+    stop = () => {
+        Tone.Transport.stop(0)
+    }
+
+
     render = () => {
         console.log(this.props.pluckyState)
         return (
             <div className="App">
                 <Button inverted color="purple"
                     onClick={this.start}>Plucky</Button>
+
+                <Button inverted color="purple"
+                    onClick={this.stop}>stop</Button>
             </div>
         );
     }

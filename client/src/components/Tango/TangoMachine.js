@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Tone from 'tone'
-import { Button} from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 
 
@@ -72,18 +72,16 @@ class TangoMachine extends Component {
             if (counter % 2 === 0) {
                 amSynth.triggerAttackRelease("c2", "4n", time, 1)
             }
-            counter = (counter+1)%16
+            counter = (counter + 1) % 16
         })
         Tone.Transport.start(0);
         loopBeat.start(0)
         Tone.Transport.bpm.value = this.props.tangoState
     }
 
-    // update = () => {
-    //     Tone.Transport.stop();
-
-    // }
-
+    stop = () => {
+        Tone.Transport.stop(0)
+    }
 
 
     render = () => {
@@ -95,15 +93,10 @@ class TangoMachine extends Component {
                 <Button inverted color="blue"
                     onClick={this.start}>Tango</Button>
 
-                {/* <Button inverted color="blue"
-                    onClick={this.update}>Update</Button> */}
+                <Button inverted color="blue"
+                    onClick={this.stop}>stop</Button>
 
 
-                {/* {isPlaying ? (
-                    <PlayButton onClick={this.start} />
-                ) : (
-                        <StopButton onClick={this.handleStopClick} />
-                    )} */}
             </div>
         );
     }

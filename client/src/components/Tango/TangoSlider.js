@@ -24,13 +24,6 @@ export default class TangoSlider extends Component {
   render() {
     const { tangoState } = this.state
 
-    const IconExampleLink = () => (
-      <div>
-        <Icon link name='like' />
-      </div>
-    )
-
-
     return (
       <React.Fragment>
 
