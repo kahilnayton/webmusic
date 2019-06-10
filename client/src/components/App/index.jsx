@@ -10,7 +10,6 @@ import tokenService from '../../service/tokenServices'
 import decode from 'jwt-decode'
 import P5Wrapper from "../P5Wrapper/";
 import config from "../../lib/config/";
-import { createTheme } from '../../service/index'
 import { getColors } from "../../lib/sliders/";
 import Machine from '../Machine/Machine'
 import MachineSlider from '../../components/Machine/MachineSlider'
@@ -78,17 +77,17 @@ export default class App extends Component {
 
   // Where the crud happens
 
-  saveTheme = async () => {
-    const themeSelectedParams = {
-      name: this.state.name,
-      red: this.state.Number.parseInt(this.state.value),
-      green: this.state.Number.parseInt(this.state.value),
-      blue: this.state.Number.parseInt(this.state.value)
-    }
-    await createTheme(this.props.user, themeSelectedParams)
-    this.getAll()
+  // saveTheme = async () => {
+  //   const themeSelectedParams = {
+  //     name: this.state.name,
+  //     red: this.state.Number.parseInt(this.state.value),
+  //     green: this.state.Number.parseInt(this.state.value),
+  //     blue: this.state.Number.parseInt(this.state.value)
+  //   }
+  //   await createTheme(this.props.user, themeSelectedParams)
+  //   this.getAll()
 
-  }
+  // }
 
 
   // fetchThemes = async () => {

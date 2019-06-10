@@ -19,14 +19,15 @@ userRouter.get('/:id',async(req,res)=>{
 })
 
 //find all sounds
-userRouter.get('/:id/sound', async(req,res)=>{
+userRouter.get('/:user_id/sound', async(req,res)=>{
   try{
     const allSounds = await Sound.findAll({
       where:{
         user_id: req.params.id
       }
     });
-    res.send(allSounds);
+    res.json(allSounds);
+    // res.send(allSounds);
   }
   catch(e){
     console.log(e)

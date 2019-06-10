@@ -25,18 +25,6 @@ export const fetchSound = async(id)=>{
   }
 }
 
-//create theme
-export const createTheme = async(id, theme)=>{
-  try{
-    const resp = await api.post(`/${id}/create-theme`, theme)
-    return resp.data;
-  }
-  catch(e){
-    console.log(e)
-  }
-}
-
-
 
 //create sound
 export const createSound = async(user, newSound)=>{
@@ -48,6 +36,33 @@ export const createSound = async(user, newSound)=>{
     console.log(e)
   }
 }
+
+//delete a food
+export const deleteSound = async (user,sound)=>{
+  try{
+    const res = await api.delete(`/${user}/sound-entry/${sound}`)
+    return res.data;
+  }
+  catch(e){
+    console.log(e)
+  }
+}
+
+
+//update sound
+const newwwwwsound = {
+  sound: 'cool'
+}
+
+export const updateSound = async () => {
+  try {
+    await api.put(`/update-sound/8`, newwwwwsound)
+  }
+  catch(e){
+    console.log(e)
+  }
+}
+
 
 
 

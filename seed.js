@@ -1,19 +1,11 @@
-const { db, Beat, User, Effect, Theme, Sound } = require('./models.js')
+const { User, Sound } = require('./models.js')
 
 async function main() {
 
     await User.destroy({
         where: {}
     })
-    await Beat.destroy({
-        where: {}
-    })
-    await Effect.destroy({
-        where: {}
-    })
-    await Theme.destroy({
-        where: {}
-    })
+
 
     await Sound.destroy({
         where: {}
@@ -34,80 +26,48 @@ async function main() {
     })
 
 
-    const tango = await Beat.create({
-        name: 'tango',
+
+    const Tango = await Sound.create({
+        name: 'Tango',
         setting: 30
     })
 
-    const edm = await Beat.create({
-        name: 'edm',
+    const Machine = await Sound.create({
+        name: 'Machine',
         setting: 60
     })
 
-    const funk = await Beat.create({
-        name: 'funk',
+    const PolySynth = await Sound.create({
+        name: 'PolySynth',
         setting: 90
     })
 
-  
 
-    const reverb = await Effect.create({
-        label: 'reverb',
-        key: 'reverb'
+    const Arpeggiator = await Sound.create({
+        name: 'Arpeggiator',
+        setting: 90
     })
 
-    const delay = await Effect.create({
-        label: 'delay',
-        key: 'delay'
+    const Plucky = await Sound.create({
+        name: 'Plucky',
+        setting: 100
     })
 
-    const flanger = await Effect.create({
-        label: 'flanger',
-        key: 'flanger'
-    })
 
-    const machine = await Sound.create({
-        name: 'machine',
+    const Am = await Sound.create({
+        name: 'Am',
         setting: 13
     })
 
-    const blue = await Sound.create({
-        name: 'blue',
-        setting: 38
-    })
 
 
-    const chill = await Theme.create({
-        name: 'chill',
-        red: 100,
-        green: 100,
-        blue: 100,
-    })
+    await Am.setUser(user1)
+    await Plucky.setUser(user1)
+    await Arpeggiator.setUser(user1)
+    await PolySynth.setUser(user1)
+    await Machine.setUser(user1)
+    await Tango.setUser(user1)
 
-
-    const badass = await Theme.create({
-        name: 'badass',
-        red: 20,
-        green: 30,
-        blue: 40,
-    })
-
-
-
-
-
-    await user1.setBeat(tango)
-    await user1.setBeat(edm)
-    await user1.setBeat(funk)
-
-
-    await user1.setEffect(reverb)
-
-    await user1.setTheme(chill)
-    await user2.setTheme(badass)
-
-    await user2.setSound(blue)
-    await user2.setSound(machine)
 
     // await user1.addSound(machine, { through: {name: 'machine'}})
 
