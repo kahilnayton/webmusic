@@ -191,12 +191,19 @@ export default class App extends Component {
           <Grid.Row>
             <Grid.Column>
               <Segment>
-                <MachineSlider />
+                <MachineSlider 
+                 user={userID}
+                 login={loggedIn}
+                 userInfo={userInfo}/>
+        
               </Segment>
             </Grid.Column>
             <Grid.Column>
               <Segment>
-                <TangoSlider />
+                <TangoSlider 
+                 user={userID}
+                 login={loggedIn}
+                 userInfo={userInfo}/>
               </Segment>
             </Grid.Column>
             <Grid.Column>
