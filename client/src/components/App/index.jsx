@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import {fetchSound, deleteSound} from '../../service/index'
 import {Route, Link} from 'react-router-dom'
 import LogInPage from '../LoginPage/LoginPage'
-import ProfilePage from '../ProfilePage/ProfilePage'
+// import ProfilePage from '../ProfilePage/ProfilePage'
 import Header from "../Header/Header";
 import tokenService from '../../service/tokenServices'
 import decode from 'jwt-decode'
@@ -189,8 +189,10 @@ export default class App extends Component {
           <Button inverted color="blue"
             onClick={() => this.getAll()}>All Sounds</Button>
 
-          <Button inverted color="pink"
-            onClick={() => this.mySounds()}>My Sounds</Button>
+          <Link to='/profile'><Button inverted color="pink"
+            onClick={() => this.mySounds()}>My Sounds
+            </Button>
+            </Link>
 
           <Link to='/'><Button inverted color="orange"
             onClick={() => this.toggleLog()}>Logout
@@ -304,14 +306,14 @@ you have to re-click the button to implement the effect slider</h4>
         </Grid>
 
 
-
+{/* 
         <ProfilePage
           findToken={this.findToken}
           toggleLog={this.toggleLog}
           user={userID}
           userInfo={userInfo}
           login={loggedIn} />
-
+ */}
 
 
         </div>
