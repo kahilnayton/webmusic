@@ -4,7 +4,17 @@ import {createSound} from '../../service/index'
 import PolyMachine from './PolyMachine'
 
 export default class PolySlider extends Component {
-  state = { polyState: 1 }
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: 'Poly',
+      polyState: 1,
+      userID: '',
+      loggedIn: true,
+      userInfo: 'userInfo'
+    }
+  }
+
 
   handleInputChange = (e, { value }) => this.setState({ polyState: value })
 
@@ -12,25 +22,16 @@ export default class PolySlider extends Component {
 
   addSound = async () => {
     // console.log('new sound', this.state.name, this.state.machineState)
-    console.log('new user', this.props.user)
+    console.log('new poly', this.props.user)
     const newSound = {
       name: this.state.name,
-      setting: Number.parseInt(this.state.machineState),
+      setting: Number.parseInt(this.state.polyState),
     }
     await createSound(this.props.user, newSound);
   }
 
   render() {
     const { polyState } = this.state
-
-    const IconExampleLink = () => (
-      <div>
-        <Icon link name='like' />
-      </div>
-    )
-
-
-    // console.log(this.state.polyState)
 
     return (
       <React.Fragment>

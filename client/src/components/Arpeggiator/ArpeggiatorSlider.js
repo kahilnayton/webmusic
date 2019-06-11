@@ -4,7 +4,17 @@ import Arpeggiator from './Arpeggiator'
 import { createSound } from '../../service/index'
 
 export default class ArpeggiatorSlider extends Component {
-    state = { arpeggiatorState: 0 }
+    constructor(props) {
+        super(props)
+        this.state = {
+          name: 'Arpeggiator',
+          arpeggiatorState: 1,
+          userID: '',
+          loggedIn: true,
+          userInfo: 'userInfo'
+        }
+      }
+
 
     handleInputChange = (e, { value }) => this.setState({ arpeggiatorState: value })
 
@@ -13,10 +23,9 @@ export default class ArpeggiatorSlider extends Component {
 
     addSound = async () => {
         // console.log('new sound', this.state.name, this.state.machineState)
-        console.log('new user', this.props.user)
         const newSound = {
             name: this.state.name,
-            setting: Number.parseInt(this.state.machineState),
+            setting: Number.parseInt(this.state.arpeggiatorState),
         }
         await createSound(this.props.user, newSound);
     }
@@ -25,12 +34,7 @@ export default class ArpeggiatorSlider extends Component {
     render() {
         const { arpeggiatorState } = this.state
 
-        const IconExampleLink = () => (
-            <div>
-                <Icon link name='like' />
-            </div>
-        )
-
+       
 
         // console.log(this.state.arpeggiatorState)
 

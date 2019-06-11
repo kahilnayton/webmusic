@@ -1,27 +1,21 @@
 /* global $ */
 
 import React, { Component } from "react";
+import {fetchSound, deleteSound} from '../../service/index'
 import {Route, Link} from 'react-router-dom'
-import ControlPanel from "../ControlPanel/";
 import LogInPage from '../LoginPage/LoginPage'
 import ProfilePage from '../ProfilePage/ProfilePage'
 import Header from "../Header/Header";
 import tokenService from '../../service/tokenServices'
 import decode from 'jwt-decode'
 import P5Wrapper from "../P5Wrapper/";
-import config from "../../lib/config/";
-import { getColors } from "../../lib/sliders/";
-import Machine from '../Machine/Machine'
 import MachineSlider from '../../components/Machine/MachineSlider'
 import TangoSlider from '../../components/Tango/TangoSlider'
 import PolySlider from '../../components/Poly/PolySlider'
 import PluckySlider from '../../components/Plucky/PluckySlider'
 import ArpeggiatorSlider from '../../components/Arpeggiator/ArpeggiatorSlider'
 import AmSlider from '../../components/Am/AmSlider'
-import SimpleLoop from '../../components/SimpleLoop'
-import { Button, Grid, Segment } from 'semantic-ui-react'
-// import { getEffect } from "../../lib/synth/synth";
-// import  drumsSamples  from "../../lib/drums/drums";
+import { Button, Grid, Segment, Card } from 'semantic-ui-react'
 import '../../App.css'
 
 export default class App extends Component {
@@ -29,9 +23,10 @@ export default class App extends Component {
     super();
 
     this.state = {
+      allSound: false,
       loggedIn: true,
       userInfo: null,
-      userID: 1,
+      userID: '',
       p5Props: {
         status: "",
       }
@@ -110,9 +105,6 @@ export default class App extends Component {
 
 
 
-  // <Button onSubmit={()=>this.addNewFood()}></Button>
-
-
   //   this.setState({
   //     loggedIn: loggedIn,
   //     userInfo: userInfo,
@@ -135,14 +127,38 @@ export default class App extends Component {
     console.log(colors, this.state.p5Props, 'savinging theme')
   }
 
-  allSounds = () => {
+  mySounds = async() => {
+    console.log('getall')
+    const allSounds = await fetchSound(this.props.user)
+    this.setState({
+      allSound: [],
+      getSound: true
+    })
     
   }
 
+//   showMySounds = () => {
+//     const {fetchSound} = this.state
+//     const myCards = fetchSound.map(entry => {
+//       const effect = entry.effect
+//       const name = entry.name
+//       return (<Card key={entry.id} className="my-cards">
+// <Card.Content extra>
+//   
+// </Card.Content>
+// <Card.Content>
+//   <Card.Meta>{ entry.effect}</Card.Meta>
+// </Card.Content>
+//       </Card>)
+//     })
+//     return myCards
+//   }
+  
 
-  mySounds = () => {
 
-  }
+  // mySounds = () => {
+
+  // }
 
 
 
@@ -171,7 +187,7 @@ export default class App extends Component {
         <div className="header-container">
 
           <Button inverted color="blue"
-            onClick={() => this.allSounds()}>All Sounds</Button>
+            onClick={() => this.getAll()}>All Sounds</Button>
 
           <Button inverted color="pink"
             onClick={() => this.mySounds()}>My Sounds</Button>
@@ -208,7 +224,14 @@ export default class App extends Component {
 <h4 className="inst">Try some sounds out... 
 you have to re-click the button to implement the effect slider</h4>
 
-        {/* <Machine /> */}
+{/* <div>
+{(this.state.allSound)
+?this.state.allSound.length
+: 
+
+}
+
+</div> */}
         <Grid columns='equal'>
           <Grid.Row>
             <Grid.Column>
@@ -281,15 +304,6 @@ you have to re-click the button to implement the effect slider</h4>
         </Grid>
 
 
-
-
-
-
-        {/* <SimpleLoop /> */}
-
-        {/* <ControlPanel
-          colors={this.state.p5Props.colors}
-          onSliderChange={this.onSliderChange} /> */}
 
         <ProfilePage
           findToken={this.findToken}

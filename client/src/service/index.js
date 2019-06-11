@@ -37,7 +37,7 @@ export const createSound = async(user, newSound)=>{
   }
 }
 
-//delete a food
+//delete a sound
 export const deleteSound = async (user,sound)=>{
   try{
     const res = await api.delete(`/${user}/sound-entry/${sound}`)

@@ -4,7 +4,17 @@ import {createSound} from '../../service/index'
 import Plucky from './Plucky'
 
 export default class PluckySlider extends Component {
-  state = { pluckyState: 1 }
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: 'Plucky',
+      pluckyState: 1,
+      userID: '',
+      loggedIn: true,
+      userInfo: 'userInfo'
+    }
+  }
+
 
   handleInputChange = (e, { value }) => this.setState({ pluckyState: value })
 
@@ -12,10 +22,10 @@ export default class PluckySlider extends Component {
 
   addSound = async () => {
     // console.log('new sound', this.state.name, this.state.machineState)
-    console.log('new user', this.props.user)
+    console.log('new pluck', this.props.user)
     const newSound = {
       name: this.state.name,
-      setting: Number.parseInt(this.state.machineState),
+      setting: Number.parseInt(this.state.pluckyState),
     }
     await createSound(this.props.user, newSound);
   }
@@ -23,14 +33,9 @@ export default class PluckySlider extends Component {
   render() {
     const { pluckyState } = this.state
 
-   
-
-    // console.log(this.state.pluckyState)
 
     return (
       <React.Fragment>
-
-
 
         <Plucky
           pluckyState={this.state.pluckyState} />

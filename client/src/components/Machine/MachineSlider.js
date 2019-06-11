@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Input, Icon, Button } from 'semantic-ui-react'
-import {createSound} from '../../service/index'
+import {createSound, deleteSound} from '../../service/index'
 import Machine from './Machine'
 
 export default class MachineSlider extends Component {
@@ -32,6 +32,10 @@ export default class MachineSlider extends Component {
   }
 
 
+
+
+
+
   render() {
     const { machineState } = this.state
     console.log(this.state.name)
@@ -56,6 +60,10 @@ export default class MachineSlider extends Component {
           <i aria-hidden="true" class="like link heart outline icon"></i>
 
         </Button>
+
+        <Button onClick={()=>this.deleteSoundHandler(this.props.user, this.state.name)} icon ="trash" className="trash-button"/>
+
+        {/* mySounds.include ? */}
 
 
 
