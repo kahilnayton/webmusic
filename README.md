@@ -1,6 +1,7 @@
 # webmusic
+<p align="center">
 <img width="400" alt="logo" src="https://user-images.githubusercontent.com/29616227/58763417-60c1a400-8528-11e9-97dd-e22f3b6ddded.png">
-
+</p>
 
 A web based drum machine, arpeggiator and synth.
 
@@ -41,6 +42,16 @@ These Different sounds can be effected with the use of a parameter and then they
 - Be able to program drums
 - Start, stop the beat with a space bar
 - be able to play different sound effects and save them to their favorites.
+
+<p align="center">
+<img width="852" position="center" alt="wire2" src="https://user-images.githubusercontent.com/29616227/59374601-816dd300-8d4c-11e9-9924-fc726c3b671e.jpg">
+</p>
+
+<p align="center">
+<img width="852" alt="wire2" src="https://user-images.githubusercontent.com/29616227/59374630-93e80c80-8d4c-11e9-9aa0-f14a76e7dc94.jpg">
+</p>
+
+
 
 
 ## MVP - post
