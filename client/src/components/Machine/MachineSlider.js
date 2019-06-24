@@ -61,7 +61,7 @@ export default class MachineSlider extends Component {
 
         </Button>
 
-        <Button onClick={()=>this.deleteSoundHandler(this.props.user, this.state.name)} icon ="trash" className="trash-button"/>
+        {/* <Button onClick={()=>this.deleteSoundHandler(this.props.user, this.state.name)} icon ="trash" className="trash-button"/> */}
 
         {/* mySounds.include ? */}
 

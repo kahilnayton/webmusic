@@ -24,7 +24,7 @@ export default class App extends Component {
 
     this.state = {
       allSound: false,
-      loggedIn: true,
+      loggedIn: false,
       userInfo: null,
       userID: '',
       p5Props: {
@@ -186,13 +186,13 @@ export default class App extends Component {
 
         <div className="header-container">
 
-          <Button inverted color="blue"
+          {/* <Button inverted color="blue"
             onClick={() => this.getAll()}>All Sounds</Button>
 
           <Link to='/profile'><Button inverted color="pink"
             onClick={() => this.mySounds()}>My Sounds
             </Button>
-            </Link>
+            </Link> */}
 
           <Link to='/'><Button inverted color="orange"
             onClick={() => this.toggleLog()}>Logout
