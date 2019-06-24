@@ -1,11 +1,12 @@
 const Sequelize = require('sequelize')
 const bcrypt = require('bcrypt')
 
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/webmusic_db', {
-    database: 'webmusic_db',
+const db = new Sequelize((process.env.DATABASE_URL || 'postgres://localhost:5432/webmusic_db'), {
     dialect: 'postgres',
+    database: 'webmusic_db',
     define: {
-        underscored: true
+        underscored: true,
+        returning: true
     }
 })
 

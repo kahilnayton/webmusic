@@ -4,7 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const logger = require('morgan');
-// const { db,User,Goal,Food,Exercise } = require('./models');
+const dotenv = require('dotenv')
+dotenv.config()
 const { userRouter } = require('./routes/userRouter');
 const passport = require('passport')
 const authRouter = require('./routes/authRouter')
