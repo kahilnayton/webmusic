@@ -4,7 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const logger = require('morgan');
-// const { db,User,Goal,Food,Exercise } = require('./models');
 const { userRouter } = require('./routes/userRouter');
 const passport = require('passport')
 const authRouter = require('./routes/authRouter')
@@ -28,8 +27,6 @@ app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/app', authorized, appRouter)
 app.use(passport.initialize())
-
-app.use('/samples', express.static('samples'));
 
 
 app.get('/', async (request, response) => {
