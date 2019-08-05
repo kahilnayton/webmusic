@@ -30,8 +30,6 @@ app.use('/auth', authRouter);
 app.use('/app', authorized, appRouter)
 app.use(passport.initialize())
 
-app.use('/samples', express.static('samples'));
-
 
 app.get('/', async (request, response) => {
   try {

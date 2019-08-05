@@ -24,7 +24,7 @@ export default class App extends Component {
 
     this.state = {
       allSound: false,
-      loggedIn: false,
+      loggedIn: true,
       userInfo: null,
       userID: '',
       p5Props: {
