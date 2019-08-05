@@ -1,7 +1,12 @@
-# webmusic
+
 <p align="center">
 <img width="400" alt="logo" src="https://user-images.githubusercontent.com/29616227/58763417-60c1a400-8528-11e9-97dd-e22f3b6ddded.png">
 </p>
+
+<p align="center">
+<img width="400" alt="logo" src="https://user-images.githubusercontent.com/29616227/62478311-c0cb0580-b778-11e9-9646-839a58dfef5e.gif">
+</p>
+
 
 A web based drum machine, arpeggiator and synth.
 
