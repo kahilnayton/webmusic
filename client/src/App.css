@@ -12,3 +12,13 @@
   color: rgb(50, 50, 145);
 
 }
+
+.nav {
+  background-color: grey;
+  border: solid;
+  width: 100%;
+}
+
+.arpeggiator {
+  border: solid green;
+}
