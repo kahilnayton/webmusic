@@ -4,11 +4,11 @@ import {Route, Link} from 'react-router-dom'
 import LogInPage from './components/LoginPage/LoginPage'
 
 import Arpeggiator from './components/Arpeggiator'
-import Am from './components/Am'
-import Machine from './components/Machine'
-import Plucky from './components/Plucky'
-import Poly from './components/Poly'
-import Tango from './components/Tango'
+import AmSynth from './components/AmSynth'
+// import Machine from './components/Machine'
+// import Plucky from './components/Plucky'
+// import Poly from './components/Poly'
+// import Tango from './components/Tango'
 
 
 
@@ -159,6 +159,7 @@ class App extends React.Component {
   componentDidMount = async () => {
     document.title = 'Web Music'
     let token = await tokenService.fetchToken()
+    console.log('mounted')
     if (token) {
       const userInfo = {}
       const data = decode(token)
@@ -186,7 +187,7 @@ class App extends React.Component {
         </div>
 
         <Arpeggiator />
-        <Am />
+        <AmSynth />
 
 
 

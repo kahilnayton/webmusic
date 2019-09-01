@@ -1,20 +1,7 @@
 import React from 'react'
-export default class Knob extends React.Component {
+export default class AmSynthKnob extends React.Component {
   constructor(props) {
     super(props);
-    this.fullAngle = props.degrees;
-    this.startAngle = (360 - props.degrees) / 2;
-    this.endAngle = this.startAngle + props.degrees;
-    this.margin = props.size * 0.15;
-    this.currentDeg = Math.floor(
-      this.convertRange(
-        props.min,
-        props.max,
-        this.startAngle,
-        this.endAngle,
-        props.value
-      )
-    );
     this.state = {
       deg: this.currentDeg,
       newValue: ''
@@ -119,7 +106,7 @@ export default class Knob extends React.Component {
         this.currentDeg / 36 +
         "%))";
     }
-    // iStyle.transform = "rotate(" + this.state.deg + "deg)";
+    iStyle.transform = "rotate(" + this.state.deg + "deg)";
 
     return (
       <div className="knob" style={kStyle}>
@@ -145,12 +132,5 @@ export default class Knob extends React.Component {
     );
   }
 }
-Knob.defaultProps = {
-  size: 150,
-  min: 10,
-  max: 30,
-  numTicks: 0,
-  degrees: 270,
-  value: 0
-};
+
 

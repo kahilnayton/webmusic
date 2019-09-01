@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Tone from 'tone'
-import AmSlider from './AmSlider.jsx'
 import { Button, Segment } from 'semantic-ui-react'
-
+import AmSynthKnob from './AmSynthKnob'
 
 
 class Am extends Component {
@@ -13,12 +12,11 @@ class Am extends Component {
             userID: '',
             loggedIn: true,
             userInfo: ''
-
         }
-
         console.log(this.props)
-
     }
+
+
     start = () => {
         let counter = 0
         let amSynth = new Tone.AMSynth({
@@ -73,8 +71,6 @@ class Am extends Component {
 
 
 
-
-
         let loopBeat = new Tone.Loop((time) => {
             if (counter % 2 === 0) {
                 amSynth.triggerAttackRelease("A2", "8n", time, 1)
@@ -109,18 +105,10 @@ class Am extends Component {
                 <Button inverted color="green"
                     onClick={this.start}>Am</Button>
 
-                <Segment>
-              <AmSlider 
-                user={this.userID}
-                login={this.loggedIn}
-                userInfo={this.userInfo}
-                />
-              </Segment>
-
                 <Button inverted color="green"
                     onClick={this.stop}>stop</Button>
 
-
+                    <AmSynthKnob />
 
             </div>
         );
