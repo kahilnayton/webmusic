@@ -27,7 +27,7 @@ class Header extends Component {
       <div className="App">
         <div className={'nav-right nav-menu' +menuActive}>
           <Navbar bg="dark" variant="dark" pointer="">
-            <Navbar.Brand href="/">Karaoke
+            <Navbar.Brand href="/">WebMusic
             <img
               src="/kk.png"
               width="30"

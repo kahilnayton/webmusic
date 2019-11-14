@@ -9,14 +9,11 @@ class P5Wrapper extends Component {
   static propTypes = {
     colors: PropTypes.array.isRequired,
     updateApp: PropTypes.func
-    // renderPattern: PropTypes.func.isRequired,
-    // onReady: PropTypes.func.isRequired,
   };
 
+  // Renders the sketch that is imported
   componentDidMount() {
-
     this.canvas = new window.p5(sketch, "app-p5_container");
-    
   }
 
   componentWillReceiveProps(nextProps) {

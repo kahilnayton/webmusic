@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Input, Icon } from 'semantic-ui-react'
 import TangoMachine from './Tango'
-// import {createSound} from '../service/index'
+import {createSound} from '../service/index'
 
 export default class TangoSlider extends Component {
   constructor(props) {
@@ -38,7 +38,6 @@ export default class TangoSlider extends Component {
     return (
       <React.Fragment>
 
-
         <TangoMachine
           tangoState={this.state.tangoState} />
         <div>Bpm {tangoState}</div>
@@ -52,7 +51,6 @@ export default class TangoSlider extends Component {
 
         <Button onClick={() => this.addSound()}>
           <i aria-hidden="true" class="like link heart outline icon"></i>
-
         </Button>
 
       </React.Fragment>
